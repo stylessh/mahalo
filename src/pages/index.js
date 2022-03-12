@@ -3,7 +3,7 @@ import Tabs from "components/Tabs";
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen overflow-x-hidden">
       {/* Hero */}
       <section className="h-[calc(100vh-100px)] flex flex-col justify-center items-center">
         <h1 className="text-5xl font-normal text-center leading-tight">
