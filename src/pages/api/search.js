@@ -1,6 +1,4 @@
-import { MovieDb } from "moviedb-promise";
-
-const moviedb = new MovieDb(process.env.TMDB_API_KEY);
+import moviedb from "lib/tmdb";
 
 export default async function handler(request, response) {
   const { query } = request;
@@ -10,13 +8,20 @@ export default async function handler(request, response) {
     const res = await moviedb.searchMovie({ query: query.q });
 
     // obtaining results with images
-    res.results.forEach(async (movie) => {
-      const movieDetails = await moviedb.movieInfo({ id: movie.id });
-      movie.poster_path = movieDetails.poster_path;
+    const movies = res.results.map(async (movie) => {
+      //   getting providers
+      const providers = await moviedb.movieWatchProviders({ id: movie.id });
+
+      return {
+        ...movie,
+        providers: providers.results["DK"],
+      };
     });
 
-    // return results
-    response.status(200).json({ results: res.results });
+    await Promise.all(movies).then((movies) => {
+      // return results
+      response.status(200).json({ results: movies });
+    });
   } catch (error) {
     console.log(error);
     response.status(500).json({ error });

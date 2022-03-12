@@ -1,7 +1,9 @@
 import SearchBar from "components/SearchBar";
 import Tabs from "components/Tabs";
 
-export default function Home() {
+import trendingMovies from "services/trendingMovies";
+
+export default function Home({ trending }) {
   return (
     <main className="min-h-screen overflow-x-hidden">
       {/* Hero */}
@@ -16,7 +18,18 @@ export default function Home() {
       </section>
 
       {/* content tabs */}
-      <Tabs />
+      <Tabs trending={trending} />
     </main>
   );
+}
+
+export async function getServerSideProps() {
+  // getting movies results
+  const trending = await trendingMovies();
+
+  return {
+    props: {
+      trending,
+    },
+  };
 }
