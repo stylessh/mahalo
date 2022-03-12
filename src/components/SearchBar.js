@@ -1,14 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import SearchResults from "./SearchResults";
 
 import useDebounce from "hooks/useDebounce";
+import useOnClickOutside from "hooks/useOnClickOutside";
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
   const debouncedQuery = useDebounce(query, 500);
 
   const [results, setResults] = useState([]);
+
+  const modalRef = useRef(null);
+
+  // handle modal view
+  const [open, setOpen] = useState(false);
+  useOnClickOutside(modalRef, () => setOpen(false));
 
   useEffect(() => {
     if (debouncedQuery) {
@@ -17,6 +24,7 @@ const SearchBar = () => {
         .then((res) => res.json())
         .then((data) => {
           setResults(data.results);
+          setOpen(true);
         });
     }
   }, [debouncedQuery]);
@@ -32,11 +40,18 @@ const SearchBar = () => {
         placeholder="Search for any movie..."
         value={query}
         onChange={handleChange}
+        onFocus={() => {
+          if (results.length > 0) {
+            setOpen(true);
+          }
+        }}
         className="w-[600px] border-2 rounded-full p-4 text-center text-2xl"
       />
 
       {/* results modal */}
-      {results.length > 0 && <SearchResults results={results} />}
+      {results.length > 0 && open ? (
+        <SearchResults results={results} ref={modalRef} />
+      ) : null}
     </article>
   );
 };
