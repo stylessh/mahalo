@@ -31,7 +31,7 @@ const AllServices = ({ trending }) => {
 
                   {item.providers && (
                     <ul>
-                      {item.providers["flatrate"].map((provider) => (
+                      {item.providers["flatrate"]?.map((provider) => (
                         <img
                           src={`https://image.tmdb.org/t/p/original/${provider.logo_path}`}
                           alt={provider.provider_name}
