@@ -8,8 +8,8 @@ import CustomServices from "./Tabs/CustomServices";
 
 const Tabs = ({ trending }) => {
   return (
-    <Tab.Group as="section" className="w-[90%] mx-auto">
-      <Tab.List as="ul" className="w-max mx-auto mb-10 space-x-12 text-2xl">
+    <Tab.Group as="section" className="relative w-[90%] mx-auto z-10">
+      <Tab.List as="ul" className="w-max mx-auto mb-10 space-x-12 text-2xl text-white">
         <Tab as={Fragment}>
           {({ selected }) => (
             <button

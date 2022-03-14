@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+/* results custom scrollbar */
+
+/* width */
+.results::-webkit-scrollbar {
+  @apply rounded-lg w-[10px];
+}
+
+/* Track */
+.results::-webkit-scrollbar-track {
+  @apply rounded-lg bg-[#ccc];
+}
+
+/* Handle */
+.results::-webkit-scrollbar-thumb {
+  @apply rounded-lg bg-[#888];
+}

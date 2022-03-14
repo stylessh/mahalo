@@ -34,7 +34,7 @@ const SearchBar = () => {
   };
 
   return (
-    <article className="relative mt-16">
+    <article className="relative mt-16 z-20">
       <input
         type="text"
         placeholder="Search for any movie..."
@@ -45,7 +45,7 @@ const SearchBar = () => {
             setOpen(true);
           }
         }}
-        className="w-[600px] border-2 rounded-full p-4 text-center text-2xl"
+        className="w-[600px] border-2 rounded-full p-4 text-center text-2xl bg-dark border-light outline-none text-white"
       />
 
       {/* results modal */}

@@ -7,13 +7,13 @@ const SearchResults = forwardRef(({ results }, ref) => {
   return (
     <article
       ref={ref}
-      className="absolute top-full left-0 w-full z-20 mt-6 border rounded-lg max-h-[250px] overflow-y-auto bg-white"
+      className="absolute top-full left-0 w-full mt-6 rounded-lg max-h-[250px] overflow-y-auto bg-dark shadow-md results"
     >
       <ul>
         {results.map((result) => (
           <li key={result.id}>
             <Link href={`/details/${result.id}`}>
-              <a className="flex items-center p-4 hover:bg-slate-50">
+              <a className="flex items-center p-4 text-white">
                 {result.poster_path ? (
                   <img
                     src={`https://image.tmdb.org/t/p/original/${result.poster_path}`}
@@ -37,13 +37,13 @@ const SearchResults = forwardRef(({ results }, ref) => {
                   </svg>
                 )}
 
-                <div className="ml-4">
+                <div className="ml-6">
                   <h3 className="text-xl font-bold">{result.title}</h3>
                   <p className="flex items-center font-semibold">
                     <img
-                      src="/assets/imdb.png"
+                      src="/assets/imdb-white.png"
                       alt="IMDB"
-                      className="w-10 mr-1 object-cover"
+                      className="w-10 mr-2 object-cover"
                     />
                     {result.vote_average}
                   </p>

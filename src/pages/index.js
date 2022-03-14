@@ -5,10 +5,17 @@ import trendingMovies from "services/trendingMovies";
 
 export default function Home({ trending }) {
   return (
-    <main className="min-h-screen overflow-x-hidden">
+    <main className="min-h-screen overflow-x-hidden bg-dark">
       {/* Hero */}
       <section className="h-[calc(100vh-100px)] flex flex-col justify-center items-center">
-        <h1 className="text-5xl font-normal text-center leading-tight">
+        {/* foreground */}
+        <img
+          src="/assets/movies-foreground.png"
+          alt="Movies Foreground"
+          className="absolute inset-0 select-none w-full h-full z-10 object-cover"
+        />
+
+        <h1 className="text-5xl font-normal text-center leading-tight text-white z-20">
           All <b className="font-bold">Streaming</b> <br /> services{" "}
           <b className="font-bold">in one place</b>
         </h1>
