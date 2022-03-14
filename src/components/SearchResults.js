@@ -1,9 +1,8 @@
 import { forwardRef } from "react";
 
 import Link from "next/link";
-import useOnClickOutside from "hooks/useOnClickOutside";
 
-const SearchResults = forwardRef(({ results }, ref) => {
+const SearchResults = ({ results }, ref) => {
   return (
     <article
       ref={ref}
@@ -55,6 +54,6 @@ const SearchResults = forwardRef(({ results }, ref) => {
       </ul>
     </article>
   );
-});
+};
 
-export default SearchResults;
+export default forwardRef(SearchResults);
