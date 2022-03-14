@@ -33,6 +33,7 @@ const AllServices = ({ trending }) => {
                     <ul>
                       {item.providers["flatrate"]?.map((provider) => (
                         <img
+                          key={provider.provider_id}
                           src={`https://image.tmdb.org/t/p/original/${provider.logo_path}`}
                           alt={provider.provider_name}
                           className="w-10 h-10 md:w-8 md:h-8 object-cover rounded-full"

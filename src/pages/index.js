@@ -15,9 +15,9 @@ export default function Home({ trending }) {
           className="absolute inset-0 select-none w-full h-full z-10 object-cover"
         />
 
-        <h1 className="text-5xl font-normal text-center leading-tight text-white z-20">
-          All <b className="font-bold">Streaming</b> <br /> services{" "}
-          <b className="font-bold">in one place</b>
+        <h1 className="text-5xl font-tight text-center leading-tight text-white z-20">
+          All <b className="font-display">Streaming</b> <br /> services{" "}
+          <b className="font-display">in one place</b>
         </h1>
 
         {/* search bar */}

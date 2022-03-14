@@ -2,7 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+/* load fonts */
 
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
+
+@font-face {
+  font-family: "Mont";
+  src: url("/assets/mont/Mont-ExtraLightDEMO.otf");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("/assets/mont/Mont-HeavyDEMO.otf");
+  font-style: bold;
+  font-weight: 700;
+  font-display: swap;
+}
 
 /* results custom scrollbar */
 

@@ -5,6 +5,12 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontFamily: {
+      tight: ["Mont", "sans-serif"],
+      body: ["Roboto", "sans-serif"],
+      display: ["Mont", "sans-serif"],
+    },
+
     extend: {
       colors: {
         dark: "#121213",
