@@ -45,9 +45,6 @@ export default function AuthContextProvider({ children }) {
 
   const refreshUser = async (id) => {
     const data = await getUserData(id);
-
-    console.log(data)
-
     setUser({ ...data, id });
   };
 

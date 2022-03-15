@@ -7,11 +7,13 @@ import Logo from "./SVG/Logo";
 import SignUp from "./SignUp";
 
 import useAuth from "hooks/useAuth";
+import SignIn from "./SignIn";
 
 const Navbar = () => {
   const { user, logout } = useAuth();
 
   const [openSignUp, setOpenSignUp] = useState(false);
+  const [openSignIn, setOpenSignIn] = useState(false);
 
   return (
     <header className="absolute top-0 left-0 right-0 flex justify-between items-center py-6 w-[90%] mx-auto z-50">
@@ -28,12 +30,24 @@ const Navbar = () => {
           </a>
         </Link>
 
-        <button
-          onClick={() => setOpenSignUp(true)}
-          className="inline-block bg-gradient-to-r from-light to-primary px-4 py-2 rounded-full text-white font-bold"
-        >
-          Get early access
-        </button>
+        {/* Auth buttons */}
+        {!user && (
+          <>
+            <button
+              onClick={() => setOpenSignIn(true)}
+              className="text-gray-600 transition hover:text-gray-400"
+            >
+              Login
+            </button>
+
+            <button
+              onClick={() => setOpenSignUp(true)}
+              className="inline-block bg-gradient-to-r from-light to-primary px-4 py-2 rounded-full text-white font-bold"
+            >
+              Get early access
+            </button>
+          </>
+        )}
 
         {user && (
           <Popover className="relative">
@@ -112,7 +126,11 @@ const Navbar = () => {
         )}
       </nav>
 
+      {/* Register modal */}
       <SignUp open={openSignUp} setOpen={setOpenSignUp} />
+
+      {/* Login modal */}
+      <SignIn open={openSignIn} setOpen={setOpenSignIn} />
     </header>
   );
 };

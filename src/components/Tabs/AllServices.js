@@ -1,10 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 
 const AllServices = ({ trending }) => {
   return (
     <section className="my-12">
-      <ul className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-8">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-8">
         {trending.map((item) => (
           <li className="relative h-full" key={item.id}>
             <Link href={`/details/${item.id}`}>
