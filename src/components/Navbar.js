@@ -69,14 +69,16 @@ const Navbar = () => {
             </Popover.Button>
 
             <Popover.Panel className="absolute z-20 right-0 top-full mt-8">
-              <section className="bg-white p-4 w-max rounded-lg shadow-xl">
-                <article className="space-y-3">
-                  <h2 className="font-bold font-display text-md">Your info</h2>
+              <section className="bg-dark p-4 w-full md:w-[240px] rounded-lg shadow-xl border border-gray-500">
+                <article className="space-y-3 text-gray-500">
+                  <h2 className="font-bold font-display text-md text-white">
+                    Your info
+                  </h2>
 
                   <div className="flex items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4 mr-2"
+                      className="h-4 w-4 mr-2 text-white"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -95,7 +97,7 @@ const Navbar = () => {
                   <div className="flex items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4 mr-2"
+                      className="h-4 w-4 mr-2 text-white"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -112,11 +114,11 @@ const Navbar = () => {
                   </div>
                 </article>
 
-                <hr className="border-gray-200 my-4" />
+                <hr className="border-gray-500 my-4" />
 
                 <button
                   onClick={async () => await logout()}
-                  className="w-full text-center text-white font-display font-bold bg-red-500 py-2 rounded-lg transition hover:bg-red-600"
+                  className="w-full text-center text-white font-display font-bold bg-red-700 py-2 rounded-lg transition hover:bg-red-800"
                 >
                   Log out
                 </button>

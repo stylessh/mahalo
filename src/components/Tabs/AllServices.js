@@ -1,4 +1,5 @@
 import Link from "next/link";
+import getProviderImage from "utils/getProviderImage";
 
 const AllServices = ({ trending }) => {
   return (
@@ -8,7 +9,7 @@ const AllServices = ({ trending }) => {
           <li className="relative h-full" key={item.id}>
             <Link href={`/details/${item.id}`}>
               <a
-                className={`block w-full h-[350px] bg-slate-100 rounded-md bg-cover`}
+                className={`block w-full h-[310px] bg-slate-100 rounded-md bg-cover bg-no-repeat`}
                 style={{
                   backgroundImage: `url(https://image.tmdb.org/t/p/original/${item.poster_path})`,
                 }}
@@ -33,9 +34,12 @@ const AllServices = ({ trending }) => {
                       {item.providers["flatrate"]?.map((provider) => (
                         <img
                           key={provider.provider_id}
-                          src={`https://image.tmdb.org/t/p/original/${provider.logo_path}`}
+                          src={getProviderImage(
+                            provider.provider_id,
+                            provider.logo_path
+                          )}
                           alt={provider.provider_name}
-                          className="w-10 h-10 md:w-8 md:h-8 object-cover rounded-full"
+                          className="w-10 h-10 object-contain rounded-full"
                         />
                       ))}
                     </ul>
