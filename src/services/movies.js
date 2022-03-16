@@ -1,6 +1,22 @@
 import moviedb from "lib/tmdb";
 
-export default async function trendingMovies(request, response) {
+export async function movieInfo(id) {
+  try {
+    // Get main info
+    const res = await moviedb.movieInfo({ id });
+    // Get watch providers
+    const providers = await moviedb.movieWatchProviders({ id: res.id });
+
+    return {
+      ...res,
+      providers: providers.results["DK"] || null,
+    };
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function trendingMovies() {
   // searching popular movies / tv series
   try {
     const res = await moviedb.moviePopular();

@@ -2,7 +2,7 @@ import SearchBar from "components/SearchBar";
 import Tabs from "components/Tabs";
 import Head from "next/head";
 
-import trendingMovies from "services/trendingMovies";
+import { trendingMovies } from "services/movies";
 
 export default function Home({ trending }) {
   return (
