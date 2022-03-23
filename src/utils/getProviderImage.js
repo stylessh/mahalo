@@ -1,13 +1,11 @@
 export default function getProviderImage(providerId, providerOriginalImage) {
-  console.log(providerId);
-
   const provider = {
     8: "Netflix",
     9: "Prime Video",
     119: "Prime Video",
     337: "Disney",
     76: "Viaplay",
-    384: "HBO Max"
+    384: "HBO Max",
   };
 
   //   return url image based on provider id
