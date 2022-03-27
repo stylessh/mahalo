@@ -6,7 +6,7 @@ import AllServices from "./Tabs/AllServices";
 import MyServices from "./Tabs/MyServices";
 import CustomServices from "./Tabs/CustomServices";
 
-const Tabs = ({ trending }) => {
+const Tabs = () => {
   return (
     <Tab.Group as="section" className="relative w-[90%] mx-auto z-10">
       <Tab.List
@@ -56,7 +56,7 @@ const Tabs = ({ trending }) => {
       {/* panels / all services - my services - custome */}
       <Tab.Panels>
         <Tab.Panel>
-          <AllServices trending={trending} />
+          <AllServices />
         </Tab.Panel>
         <Tab.Panel>
           <MyServices />

@@ -1,9 +1,23 @@
-import Related from "components/Related";
+import { useState } from "react";
 import Head from "next/head";
+import { useRouter } from "next/router";
+
+import Related from "components/Related";
 
 import { movieInfo, relatedMovies } from "services/movies";
+import Trailer from "components/Trailer";
 
 const MovieDetails = ({ movie, related }) => {
+  const router = useRouter();
+
+  const [trailer, setTrailer] = useState("");
+  const [openTrailerModal, setOpenTrailerModal] = useState(false);
+
+  const showTrailer = (trailerId) => {
+    setTrailer(trailerId);
+    setOpenTrailerModal(true);
+  };
+
   return (
     <main className="min-h-screen bg-dark">
       {/* SEO HEAD */}
@@ -25,28 +39,47 @@ const MovieDetails = ({ movie, related }) => {
 
         {/* content */}
 
-        <section className="w-[70%] mx-auto z-20 mt-[90px] xl:mt-0 bg-dark border-2 border-gray-500 p-8 rounded-lg grid grid-cols-1 xl:grid-cols-[1fr,2fr] gap-x-5">
+        <section className="relative w-[90%] md:w-[70%] mx-auto z-20 mt-[90px] xl:mt-0 bg-dark border-2 border-gray-500 p-8 rounded-lg grid grid-cols-1 xl:grid-cols-[1fr,2fr] gap-x-5">
+          {/* close button */}
+          <button
+            onClick={() => router.back()}
+            className="absolute top-5 right-6"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5 text-white"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+
           {/* media */}
           <article>
             {/* poster image */}
             <img
               src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
               alt={movie.title}
-              className="w-full h-[240px] object-cover md:h-[420px] md:object-contain"
+              className="w-full h-[240px] object-contain md:h-[420px]"
             />
 
             {/* trailer */}
 
             {movie.trailer && (
               <div className="mt-4 text-center">
-                <a
-                  href={`https://www.youtube.com/watch?v=${movie.trailer.key}`}
-                  target="_blank"
-                  rel="noreferrer"
+                <button
+                  onClick={() => showTrailer(movie.trailer.key)}
                   className="text-lg text-gray-300 hover:underline"
                 >
                   Watch trailer
-                </a>
+                </button>
               </div>
             )}
           </article>
@@ -105,6 +138,13 @@ const MovieDetails = ({ movie, related }) => {
             <p className="text-gray-500 my-8 text-lg">{movie.overview}</p>
           </article>
         </section>
+
+        {/* trailer modal  */}
+        <Trailer
+          open={openTrailerModal}
+          setOpen={setOpenTrailerModal}
+          trailerId={trailer}
+        />
       </section>
 
       <Related related={related} />

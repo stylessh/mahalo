@@ -1,31 +1,21 @@
-import { useEffect, useState, useRef } from "react";
-
-import SearchResults from "./SearchResults";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 import useDebounce from "hooks/useDebounce";
-import useOnClickOutside from "hooks/useOnClickOutside";
+import useMovies from "hooks/useMovies";
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
-  const debouncedQuery = useDebounce(query, 500);
+  const debouncedQuery = useDebounce(query, 200);
 
-  const [results, setResults] = useState([]);
-
-  const modalRef = useRef(null);
-
-  // handle modal view
-  const [open, setOpen] = useState(false);
-  useOnClickOutside(modalRef, () => setOpen(false));
+  const { setTrending } = useMovies();
 
   useEffect(() => {
     if (debouncedQuery) {
       //  searching movie by query from input
-      fetch(`/api/search?q=${debouncedQuery}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setResults(data.results);
-          setOpen(true);
-        });
+      axios.get(`/api/search?q=${debouncedQuery}`).then(({ data }) => {
+        setTrending(data.results);
+      });
     }
   }, [debouncedQuery]);
 
@@ -34,24 +24,14 @@ const SearchBar = () => {
   };
 
   return (
-    <article className="relative mt-16 z-20 w-[90%] mx-auto md:w-[600px]">
+    <article className="relative mt-8 z-20 w-[90%] mx-auto md:w-[600px]">
       <input
         type="text"
         placeholder="Search for any movie..."
         value={query}
         onChange={handleChange}
-        onFocus={() => {
-          if (results.length > 0) {
-            setOpen(true);
-          }
-        }}
         className="block w-full border-2 rounded-full p-4 text-center text-2xl bg-dark border-light outline-none text-white"
       />
-
-      {/* results modal */}
-      {results.length > 0 && open ? (
-        <SearchResults results={results} ref={modalRef} />
-      ) : null}
     </article>
   );
 };

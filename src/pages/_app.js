@@ -6,6 +6,7 @@ import Navbar from "components/Navbar";
 import { Toaster } from "react-hot-toast";
 
 import AuthContextProvider from "context/authContext";
+import MoviesContextProvider from "context/moviesContext";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -24,7 +25,9 @@ function MyApp({ Component, pageProps }) {
 
       <Navbar />
 
-      <Component {...pageProps} />
+      <MoviesContextProvider>
+        <Component {...pageProps} />
+      </MoviesContextProvider>
 
       <Toaster position="bottom-left" />
     </AuthContextProvider>

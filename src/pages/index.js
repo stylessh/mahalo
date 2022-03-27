@@ -1,10 +1,19 @@
+import { useEffect } from "react";
+
 import SearchBar from "components/SearchBar";
 import Tabs from "components/Tabs";
 import Head from "next/head";
 
 import { trendingMovies } from "services/movies";
+import useMovies from "hooks/useMovies";
 
 export default function Home({ trending }) {
+  const { setTrending } = useMovies();
+
+  useEffect(() => {
+    setTrending(trending);
+  }, []);
+
   return (
     <main className="min-h-screen overflow-x-hidden bg-dark">
       {/* SEO HEAD */}
@@ -13,7 +22,7 @@ export default function Home({ trending }) {
       </Head>
 
       {/* Hero */}
-      <section className="h-[calc(100vh-100px)] flex flex-col justify-center items-center">
+      <section className="h-[50vh] flex flex-col justify-end items-center mb-12">
         {/* foreground */}
         <img
           src="/assets/movies-foreground.png"
@@ -31,7 +40,7 @@ export default function Home({ trending }) {
       </section>
 
       {/* content tabs */}
-      <Tabs trending={trending} />
+      <Tabs />
     </main>
   );
 }
