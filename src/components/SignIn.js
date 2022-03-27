@@ -5,7 +5,7 @@ import { toast } from "react-hot-toast";
 import useAuth from "hooks/useAuth";
 
 const SignIn = ({ open, setOpen }) => {
-  const { login } = useAuth();
+  const { login, setOpenSignIn, setOpenSignUp } = useAuth();
 
   const [credentials, setCredentials] = useState({
     email: "",
@@ -91,6 +91,20 @@ const SignIn = ({ open, setOpen }) => {
                   className="w-full py-2 px-4 bg-transparent border border-gray-600 rounded-lg outline-none text-white font-tight placeholder:text-gray-600"
                 />
               </form>
+
+              <button
+                onClick={() => {
+                  setOpenSignIn(false);
+
+                  setTimeout(() => {
+                    setOpenSignUp(true);
+                  }, 500);
+                }}
+                className="mb-6 text-sm text-gray-500 hover:underline"
+              >
+                Don't have an account?{" "}
+                <span className="text-light">Create one</span>
+              </button>
 
               <button
                 onClick={async (e) => await handleSubmit(e)}

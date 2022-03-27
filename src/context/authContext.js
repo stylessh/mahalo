@@ -19,6 +19,14 @@ const initial = {
   logout: null,
 
   refreshUser: null,
+
+  // signup modal
+  openSignUp: null,
+  setOpenSignUp: null,
+
+  // signin modal
+  openSignIn: null,
+  setOpenSignIn: null,
 };
 
 // create context and export it
@@ -28,6 +36,9 @@ export const AuthContext = createContext(initial);
 export default function AuthContextProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const [openSignUp, setOpenSignUp] = useState(false);
+  const [openSignIn, setOpenSignIn] = useState(false);
 
   // create useEffect that will listen to auth state changes
   useEffect(() => {
@@ -95,6 +106,14 @@ export default function AuthContextProvider({ children }) {
     logout,
 
     refreshUser,
+
+    // signup modal
+    openSignUp,
+    setOpenSignUp,
+
+    // signin modal
+    openSignIn,
+    setOpenSignIn,
   };
 
   return (

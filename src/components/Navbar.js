@@ -10,10 +10,8 @@ import useAuth from "hooks/useAuth";
 import SignIn from "./SignIn";
 
 const Navbar = () => {
-  const { user, logout } = useAuth();
-
-  const [openSignUp, setOpenSignUp] = useState(false);
-  const [openSignIn, setOpenSignIn] = useState(false);
+  const { user, logout, openSignIn, openSignUp, setOpenSignIn, setOpenSignUp } =
+    useAuth();
 
   return (
     <header className="absolute top-0 left-0 right-0 flex justify-between items-center py-6 w-[90%] mx-auto z-50">
