@@ -102,7 +102,7 @@ const SignIn = ({ open, setOpen }) => {
                 }}
                 className="mb-6 text-sm text-gray-500 hover:underline"
               >
-                Don't have an account?{" "}
+                {"Don't have an account?"}
                 <span className="text-light">Create one</span>
               </button>
 
