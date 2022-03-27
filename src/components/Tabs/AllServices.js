@@ -8,7 +8,7 @@ const AllServices = () => {
 
   return (
     <section className="my-12">
-      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-8">
+      <ul className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-8">
         {trending.map((item) => (
           <li className="relative h-full" key={item.id}>
             <Link href={`/details/${item.id}`}>
