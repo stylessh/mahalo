@@ -18,7 +18,7 @@ export default function Home({ trending }) {
     <main className="min-h-screen overflow-x-hidden bg-dark">
       {/* SEO HEAD */}
       <Head>
-        <title>Mahalo TV</title>
+        <title>Mahalo TV - All Streaming services in one place.</title>
       </Head>
 
       {/* Hero */}

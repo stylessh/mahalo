@@ -7,6 +7,8 @@ import Related from "components/Related";
 import { movieInfo, relatedMovies } from "services/movies";
 import Trailer from "components/Trailer";
 
+import getProviderImage from "utils/getProviderImage";
+
 const MovieDetails = ({ movie, related }) => {
   const router = useRouter();
 
@@ -136,6 +138,70 @@ const MovieDetails = ({ movie, related }) => {
             {/* Overview */}
 
             <p className="text-gray-500 my-8 text-lg">{movie.overview}</p>
+
+            {/* providers section */}
+
+            {movie.providers && (
+              <ul className="space-y-4">
+                {/* Subscription services */}
+                {movie.providers["flatrate"] && (
+                  <li>
+                    <h3 className="text-white font-display font-bold text-xl">
+                      Subscription Services
+                    </h3>
+
+                    <div className="flex space-x-4 mt-2 flex-wrap">
+                      {movie.providers["flatrate"]?.map((provider) => (
+                        <a
+                          key={provider.provider_id}
+                          href={movie.providers.link}
+                          target="_blank"
+                          rel="noopenner"
+                        >
+                          <img
+                            src={getProviderImage(
+                              provider.provider_id,
+                              provider.logo_path
+                            )}
+                            alt={provider.provider_name}
+                            className="w-12 h-12 object-contain"
+                          />
+                        </a>
+                      ))}
+                    </div>
+                  </li>
+                )}
+
+                {/* Rent / Buy */}
+                {movie.providers["rent"] && (
+                  <li>
+                    <h3 className="text-white font-display font-bold text-xl">
+                      Rent - Buy
+                    </h3>
+
+                    <div className="flex space-x-4 mt-2">
+                      {movie.providers["rent"]?.map((provider) => (
+                        <a
+                          key={provider.provider_id}
+                          href={movie.providers.link}
+                          target="_blank"
+                          rel="noopenner"
+                        >
+                          <img
+                            src={getProviderImage(
+                              provider.provider_id,
+                              provider.logo_path
+                            )}
+                            alt={provider.provider_name}
+                            className="w-10 h-10 object-contain"
+                          />
+                        </a>
+                      ))}
+                    </div>
+                  </li>
+                )}
+              </ul>
+            )}
           </article>
         </section>
 

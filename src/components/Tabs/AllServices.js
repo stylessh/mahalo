@@ -8,12 +8,12 @@ const AllServices = () => {
 
   return (
     <section className="my-12">
-      <ul className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-8">
+      <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-8">
         {trending.map((item) => (
           <li className="relative h-full" key={item.id}>
             <Link href={`/details/${item.id}`}>
               <a
-                className={`block w-full h-[310px] bg-slate-100 rounded-md bg-cover bg-no-repeat`}
+                className={`block w-full h-[245px] md:h-[310px] bg-slate-100 rounded-md bg-cover bg-no-repeat`}
                 style={{
                   backgroundImage: `url(https://image.tmdb.org/t/p/original/${item.poster_path})`,
                 }}
