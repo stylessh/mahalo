@@ -9,12 +9,12 @@ const Related = ({ related }) => {
       </h2>
 
       <section className="py-12">
-        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-8">
+        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-8">
           {related.map((item) => (
             <li className="relative h-full" key={item.id}>
               <Link href={`/details/${item.id}`}>
                 <a
-                  className={`block w-full h-[310px] bg-slate-100 rounded-md bg-cover bg-no-repeat`}
+                  className={`block w-full h-[245px] md:h-[310px] bg-slate-100 rounded-md bg-cover bg-no-repeat`}
                   style={{
                     backgroundImage: `url(https://image.tmdb.org/t/p/original/${item.poster_path})`,
                   }}
@@ -43,7 +43,7 @@ const Related = ({ related }) => {
                         )}
                         alt={item.providers["flatrate"][0].provider_name}
                         className="w-12 h-12 object-contain"
-                        />
+                      />
                     ) : null}
                   </article>
                 </a>
