@@ -156,7 +156,7 @@ const MovieDetails = ({ movie, related }) => {
                           key={provider.provider_id}
                           href={movie.providers.link}
                           target="_blank"
-                          rel="noopenner"
+                          rel="noreferrer"
                         >
                           <img
                             src={getProviderImage(
@@ -185,7 +185,7 @@ const MovieDetails = ({ movie, related }) => {
                           key={provider.provider_id}
                           href={movie.providers.link}
                           target="_blank"
-                          rel="noopenner"
+                          rel="noreferrer"
                         >
                           <img
                             src={getProviderImage(
