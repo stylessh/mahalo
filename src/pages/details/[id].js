@@ -41,7 +41,7 @@ const MovieDetails = ({ movie, related }) => {
 
         {/* content */}
 
-        <section className="relative w-[90%] md:w-[70%] mx-auto z-20 mt-[90px] xl:mt-0 bg-dark border-2 border-gray-500 p-8 rounded-lg grid grid-cols-1 xl:grid-cols-[1fr,2fr] gap-x-5">
+        <section className="relative w-[90%] md:w-[70%] mx-auto z-20 mt-[90px] bg-dark border-2 border-gray-500 p-8 rounded-lg grid grid-cols-1 xl:grid-cols-[1fr,2fr] gap-x-5">
           {/* close button */}
           <button
             onClick={() => router.back()}

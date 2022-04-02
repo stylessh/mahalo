@@ -1,0 +1,30 @@
+[
+  {
+    "id": 8,
+    "name": "Netflix",
+    "badge": "NetflixBadge.png"
+  },
+
+  {
+    "id": 9,
+    "name": "Prime Video",
+    "badge": "Prime VideoBadge.png"
+  },
+
+  {
+    "id": 337,
+    "name": "Disney",
+    "badge": "DisneyBadge.png"
+  },
+
+  {
+    "id": 76,
+    "name": "Viaplay",
+    "badge": "ViaplayBadge.png"
+  },
+  {
+    "id": 384,
+    "name": "HBO Max",
+    "badge": "HBO MaxBadge.png"
+  }
+]

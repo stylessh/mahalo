@@ -14,7 +14,10 @@ export async function movieInfo(id) {
       providers: providers.results["DK"] || null,
       trailer:
         trailers.results.find(
-          (trailer) => trailer.type === "Trailer" && trailer.site === "YouTube"
+          (trailer) =>
+            trailer.type === "Trailer" &&
+            trailer.site === "YouTube" &&
+            trailer.official
         ) || null,
     };
   } catch (error) {
