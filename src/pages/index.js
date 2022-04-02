@@ -27,7 +27,7 @@ export default function Home({ trending }) {
         <img
           src="/assets/movies-foreground.png"
           alt="Movies Foreground"
-          className="absolute inset-0 select-none w-full h-full z-10 object-cover"
+          className="absolute inset-0 bg-center select-none w-full h-full z-10 object-cover"
         />
 
         <h1 className="text-3xl md:text-5xl font-tight text-center leading-tight text-white z-20 px-6">

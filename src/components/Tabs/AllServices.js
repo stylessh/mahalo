@@ -43,7 +43,7 @@ const AllServices = () => {
                             provider.logo_path
                           )}
                           alt={provider.provider_name}
-                          className="w-10 h-10 object-contain rounded-full"
+                          className="w-12 h-12 object-contain"
                         />
                       ))}
                     </ul>

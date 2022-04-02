@@ -42,8 +42,8 @@ const Related = ({ related }) => {
                           item.providers["flatrate"][0].logo_path
                         )}
                         alt={item.providers["flatrate"][0].provider_name}
-                        className="w-10 h-10 object-contain rounded-full"
-                      />
+                        className="w-12 h-12 object-contain"
+                        />
                     ) : null}
                   </article>
                 </a>
