@@ -22,7 +22,7 @@ const Navbar = () => {
 
       {/* desktop nav */}
       <nav className="space-x-6 hidden items-center md:flex">
-        <a href="https://airtable.com/shr5zMoQ5rFQYi5kF" target="_blank" rel="norreferer" className="text-gray-600 transition hover:text-gray-400">
+        <a href="https://airtable.com/shr5zMoQ5rFQYi5kF" target="_blank" rel="noreferrer" className="text-gray-600 transition hover:text-gray-400">
           Help us improve
         </a>
 
