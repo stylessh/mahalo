@@ -11,7 +11,7 @@ const ProviderList = () => {
             <img
               src={`/assets/providers/${provider.badge}`}
               alt={provider.name}
-              className="object-cover w-full h-full rounded-md"
+              className="object-cover w-full h-full rounded-md select-none"
             />
           </li>
         ))}

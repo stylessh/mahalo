@@ -22,11 +22,9 @@ const Navbar = () => {
 
       {/* desktop nav */}
       <nav className="space-x-6 hidden items-center md:flex">
-        <Link href="/feedback">
-          <a className="text-gray-600 transition hover:text-gray-400">
-            Help us improve
-          </a>
-        </Link>
+        <a href="https://airtable.com/shr5zMoQ5rFQYi5kF" target="_blank" rel="norreferer" className="text-gray-600 transition hover:text-gray-400">
+          Help us improve
+        </a>
 
         {/* Auth buttons */}
         {!user && (
