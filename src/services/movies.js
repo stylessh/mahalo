@@ -48,10 +48,12 @@ export async function relatedMovies(id) {
   }
 }
 
-export async function trendingMovies() {
+export async function trendingMovies(page = 1) {
   // searching popular movies / tv series
   try {
-    const res = await moviedb.moviePopular();
+    const res = await moviedb.moviePopular({
+      page: page
+    });
 
     // obtaining results with images
     const movies = res.results.map(async (movie) => {
