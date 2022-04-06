@@ -40,7 +40,7 @@ const AllServices = () => {
         className="relative grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-8"
       >
         {trending.map((item) => (
-          <li className="relative h-full outline-none" key={item.id}>
+          <li className="relative h-full outline-none list-none" key={item.id}>
             <Link href={`/details/${item.id}`}>
               <a
                 className={`block w-full h-[245px] md:h-[310px] bg-slate-100 rounded-md bg-cover bg-no-repeat`}
