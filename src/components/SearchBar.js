@@ -6,6 +6,7 @@ import useMovies from "hooks/useMovies";
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
+  const [hasSearched, setHasSearched] = useState(false)
   const debouncedQuery = useDebounce(query, 200);
 
   const { setTrending } = useMovies();
@@ -15,6 +16,17 @@ const SearchBar = () => {
       //  searching movie by query from input
       axios.get(`/api/search?q=${debouncedQuery}`).then(({ data }) => {
         setTrending(data.results);
+      });
+
+      setHasSearched(true);
+
+      return
+    }
+    // get trending movies
+
+    if(!debouncedQuery && hasSearched) {
+      axios.get("/api/movies/trending").then(({ data }) => {
+        setTrending(data);
       });
     }
   }, [debouncedQuery]);

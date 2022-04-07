@@ -34,7 +34,7 @@ const MovieDetails = ({ movie, related }) => {
         <img
           src="/assets/movies-foreground.png"
           alt="Movies Foreground"
-          className="absolute inset-0 select-none w-full h-full z-10 object-cover"
+          className="absolute inset-0 select-none w-full h-full z-10 object-contain"
         />
 
         {/* content */}

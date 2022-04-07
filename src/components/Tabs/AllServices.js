@@ -37,7 +37,7 @@ const AllServices = () => {
         hasMore={true}
         loader={<Loading />}
         endMessage={<EndMessage />}
-        className="relative grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-8"
+        className="relative grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8 gap-8"
       >
         {trending.map((item) => (
           <li className="relative h-full outline-none list-none" key={item.id}>
