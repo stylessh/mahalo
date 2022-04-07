@@ -18,7 +18,7 @@ export const ProvidersContext = createContext(initial);
 export default function ProvidersContextProvider({ children }) {
   const { user } = useAuth();
   const [providers, setProviders] = useState([...data]);
-  const [activatedProviders, setActivatedProviders] = useState([...data]);
+  const [activatedProviders, setActivatedProviders] = useState([]);
 
   const saveProviders = () => {};
 

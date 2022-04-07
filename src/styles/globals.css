@@ -24,16 +24,16 @@
 /* results custom scrollbar */
 
 /* width */
-.results::-webkit-scrollbar {
+.providers-list::-webkit-scrollbar {
   @apply rounded-lg w-[10px];
 }
 
 /* Track */
-.results::-webkit-scrollbar-track {
+.providers-list::-webkit-scrollbar-track {
   @apply rounded-lg bg-[#ccc];
 }
 
 /* Handle */
-.results::-webkit-scrollbar-thumb {
+.providers-list::-webkit-scrollbar-thumb {
   @apply rounded-lg bg-[#888];
 }
