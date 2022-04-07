@@ -64,7 +64,7 @@ const AllServices = () => {
                   </p>
 
                   {item.providers && (
-                    <ul>
+                    <ul className="-space-y-2">
                       {item.providers["flatrate"]?.map((provider) => (
                         <img
                           key={provider.provider_id}

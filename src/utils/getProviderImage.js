@@ -6,6 +6,7 @@ export default function getProviderImage(providerId, providerOriginalImage) {
     337: "Disney",
     76: "Viaplay",
     384: "HBO Max",
+    118: "HBO Max",
   };
 
   //   return url image based on provider id
