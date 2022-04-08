@@ -15,7 +15,7 @@ export async function movieInfo(id) {
         "DK"
       ].flatrate.filter((provider) => provider.provider_id !== 118);
     }
-    
+
     return {
       ...res,
       providers: providers.results["DK"] || null,
@@ -75,8 +75,8 @@ export async function trendingMovies(page = 1) {
       const providers = await moviedb.movieWatchProviders({ id: movie.id });
 
       // remove HBO provider in flatrate
-      if (providers.results["DK"].flatrate) {
-        providers.results["DK"].flatrate = providers.results[
+      if (providers.results["DK"]?.flatrate) {
+        providers.results["DK"]?.flatrate = providers.results[
           "DK"
         ].flatrate.filter((provider) => provider.provider_id !== 118);
       }
