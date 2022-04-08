@@ -121,7 +121,7 @@ const MovieDetails = ({ movie, related }) => {
               </li>
 
               {/* Genres */}
-              <ul className="flex items-center space-x-3">
+              <ul className="flex items-center md:space-x-3 flex-wrap">
                 {movie.genres.map((genre) => (
                   <li
                     key={genre.id}
@@ -162,7 +162,7 @@ const MovieDetails = ({ movie, related }) => {
                               provider.logo_path
                             )}
                             alt={provider.provider_name}
-                            className="w-12 h-12 object-contain"
+                            className="w-16 h-16 object-contain"
                           />
                         </a>
                       ))}
@@ -191,7 +191,7 @@ const MovieDetails = ({ movie, related }) => {
                               provider.logo_path
                             )}
                             alt={provider.provider_name}
-                            className="w-10 h-10 object-contain"
+                            className="w-16 h-16 object-contain"
                           />
                         </a>
                       ))}
@@ -219,7 +219,7 @@ const MovieDetails = ({ movie, related }) => {
                               provider.logo_path
                             )}
                             alt={provider.provider_name}
-                            className="w-10 h-10 object-contain"
+                            className="w-16 h-16 object-contain"
                           />
                         </a>
                       ))}

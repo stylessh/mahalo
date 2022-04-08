@@ -34,17 +34,33 @@ const Related = ({ related }) => {
                       {item.vote_average.toFixed(1)}
                     </p>
 
-                    {item.providers && item.providers["flatrate"] ? (
-                      <img
-                        key={item.providers["flatrate"][0].provider_id}
-                        src={getProviderImage(
-                          item.providers["flatrate"][0].provider_id,
-                          item.providers["flatrate"][0].logo_path
+                    {item.providers && (
+                      <ul className="-space-y-2">
+                        {item.providers["flatrate"]?.map((provider) => (
+                          <img
+                            key={provider.provider_id}
+                            src={getProviderImage(
+                              provider.provider_id,
+                              provider.logo_path
+                            )}
+                            alt={provider.provider_name}
+                            className="w-12 h-12 object-contain"
+                          />
+                        ))}
+
+                        {!item.providers["flatrate"] && (
+                          <>
+                            {item.providers["buy"] || item.providers["rent"] ? (
+                              <img
+                                src="/assets/providers/RentBuy.png"
+                                alt="RentBuy"
+                                className="w-12 h-12 object-contain"
+                              />
+                            ) : null}
+                          </>
                         )}
-                        alt={item.providers["flatrate"][0].provider_name}
-                        className="w-12 h-12 object-contain"
-                      />
-                    ) : null}
+                      </ul>
+                    )}
                   </article>
                 </a>
               </Link>

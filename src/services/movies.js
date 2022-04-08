@@ -9,6 +9,13 @@ export async function movieInfo(id) {
     // Get movie trailers
     const trailers = await moviedb.movieVideos({ id: res.id });
 
+    // remove HBO provider in flatrate
+    if (providers.results["DK"].flatrate) {
+      providers.results["DK"].flatrate = providers.results[
+        "DK"
+      ].flatrate.filter((provider) => provider.provider_id !== 118);
+    }
+    
     return {
       ...res,
       providers: providers.results["DK"] || null,
@@ -34,6 +41,13 @@ export async function relatedMovies(id) {
       //   getting providers
       const providers = await moviedb.movieWatchProviders({ id: movie.id });
 
+      // remove HBO provider in flatrate
+      if (providers.results["DK"].flatrate) {
+        providers.results["DK"].flatrate = providers.results[
+          "DK"
+        ].flatrate.filter((provider) => provider.provider_id !== 118);
+      }
+
       return {
         ...movie,
         providers: providers.results["DK"] || null,
@@ -52,13 +66,20 @@ export async function trendingMovies(page = 1) {
   // searching popular movies / tv series
   try {
     const res = await moviedb.moviePopular({
-      page: page
+      page: page,
     });
 
     // obtaining results with images
     const movies = res.results.map(async (movie) => {
       //   getting providers
       const providers = await moviedb.movieWatchProviders({ id: movie.id });
+
+      // remove HBO provider in flatrate
+      if (providers.results["DK"].flatrate) {
+        providers.results["DK"].flatrate = providers.results[
+          "DK"
+        ].flatrate.filter((provider) => provider.provider_id !== 118);
+      }
 
       return {
         ...movie,

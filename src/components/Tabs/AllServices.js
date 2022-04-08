@@ -12,7 +12,11 @@ const EndMessage = () => (
   </p>
 );
 
-const Loading = () => <h4 className="absolute bottom-0 text-white font-bold left-2/4">Loading...</h4>;
+const Loading = () => (
+  <h4 className="absolute bottom-0 text-white font-bold left-2/4">
+    Loading...
+  </h4>
+);
 
 const AllServices = () => {
   const { trending, setTrending, trendingPage, setTrendingPage } = useMovies();
@@ -21,7 +25,7 @@ const AllServices = () => {
   const loadMore = async () => {
     setTrendingPage(trendingPage + 1);
 
-    const { data } = await axios.get('/api/movies/trending', {
+    const { data } = await axios.get("/api/movies/trending", {
       params: {
         page: trendingPage + 1,
       },
@@ -76,6 +80,18 @@ const AllServices = () => {
                           className="w-12 h-12 object-contain"
                         />
                       ))}
+
+                      {!item.providers["flatrate"] && (
+                        <>
+                          {item.providers["buy"] || item.providers["rent"] ? (
+                            <img
+                              src="/assets/providers/RentBuy.png"
+                              alt="RentBuy"
+                              className="w-12 h-12 object-contain"
+                            />
+                          ) : null}
+                        </>
+                      )}
                     </ul>
                   )}
                 </article>
