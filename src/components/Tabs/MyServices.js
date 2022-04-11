@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import useMovies from "hooks/useMovies";
 import Link from "next/link";
@@ -7,6 +7,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import getProviderImage from "utils/getProviderImage";
 import useProviders from "hooks/useProviders";
 import axios from "axios";
+import Spinner from "components/Spinner";
 
 const EndMessage = () => (
   <p className="absolute bottom-0 text-white font-bold left-2/4">
@@ -29,17 +30,27 @@ const MyServices = () => {
   } = useMovies();
   const { providersIds } = useProviders();
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    axios
-      .get("/api/movies/custom", {
-        params: {
-          providers: providersIds.join("|"),
-          page: customMoviesPage,
-        },
-      })
-      .then((res) => {
-        setCustomMovies(res.data);
-      });
+    if (customMovies.length === 0) {
+      setLoading(true);
+
+      axios
+        .get("/api/movies/custom", {
+          params: {
+            providers: providersIds.join("|"),
+            page: customMoviesPage,
+          },
+        })
+        .then((res) => {
+          setCustomMovies(res.data);
+
+          setLoading(false);
+        });
+    } else {
+      setLoading(false)
+    }
   }, []);
 
   const loadMore = async () => {
@@ -57,6 +68,8 @@ const MyServices = () => {
 
   return (
     <section className="my-12">
+      {loading && <Spinner />}
+
       <InfiniteScroll
         dataLength={customMovies.length}
         next={async () => await loadMore()}
