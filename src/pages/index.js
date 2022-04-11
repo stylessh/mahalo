@@ -4,11 +4,11 @@ import SearchBar from "components/SearchBar";
 import Tabs from "components/Tabs";
 import Head from "next/head";
 
-import { trendingMovies } from "services/movies";
+import { moviesByProviders, trendingMovies } from "services/movies";
 import useMovies from "hooks/useMovies";
 
 export default function Home({ trending }) {
-  const { setTrending } = useMovies();
+  const { setTrending, setCustomMovies } = useMovies();
 
   useEffect(() => {
     setTrending(trending);

@@ -2,13 +2,14 @@ import useAuth from "hooks/useAuth";
 import { useState, useEffect, createContext } from "react";
 
 const initial = {
-  saveProviders: () => {},
-
   providers: [],
   setProviders: () => {},
 
   activatedProviders: [],
   setActivatedProviders: () => {},
+
+  providersIds: [],
+  setProvidersIds: () => {},
 };
 
 import data from "providers.json";
@@ -19,17 +20,33 @@ export default function ProvidersContextProvider({ children }) {
   const { user } = useAuth();
   const [providers, setProviders] = useState([...data]);
   const [activatedProviders, setActivatedProviders] = useState([]);
+  const [providersIds, setProvidersIds] = useState([]);
 
-  const saveProviders = () => {};
+  useEffect(() => {
+    if (user) {
+      setActivatedProviders([...user.favoritesProviders]);
+    } else {
+      setActivatedProviders([]);
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (activatedProviders.length > 0) {
+      setProvidersIds(
+        activatedProviders.map((provider) => provider.provider_id)
+      );
+    }
+  }, [activatedProviders]);
 
   const value = {
-    saveProviders,
-
     providers,
     setProviders,
 
     activatedProviders,
     setActivatedProviders,
+
+    providersIds,
+    setProvidersIds,
   };
 
   return (

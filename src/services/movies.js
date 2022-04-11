@@ -1,3 +1,4 @@
+import axios from "axios";
 import moviedb from "lib/tmdb";
 
 export async function movieInfo(id) {
@@ -43,7 +44,7 @@ export async function relatedMovies(id) {
 
       // remove HBO provider in flatrate
       if (providers.results["DK"]?.flatrate) {
-        providers.results["DK"]?.flatrate = providers.results[
+        providers.results["DK"].flatrate = providers.results[
           "DK"
         ].flatrate.filter((provider) => provider.provider_id !== 118);
       }
@@ -76,7 +77,7 @@ export async function trendingMovies(page = 1) {
 
       // remove HBO provider in flatrate
       if (providers.results["DK"]?.flatrate) {
-        providers.results["DK"]?.flatrate = providers.results[
+        providers.results["DK"].flatrate = providers.results[
           "DK"
         ].flatrate.filter((provider) => provider.provider_id !== 118);
       }

@@ -1,22 +1,37 @@
 import { Fragment, useState } from "react";
 import { Transition, Dialog } from "@headlessui/react";
 
-import providers from "data.json";
+import allProviders from "data.json";
 import getProviderImage from "utils/getProviderImage";
 
+import { updateUserProviders } from "services/users";
+import useAuth from "hooks/useAuth";
+import toast from "react-hot-toast";
+import useProviders from "hooks/useProviders";
+
 const CustomServices = ({ open, setOpen }) => {
-  const [selected, setSelected] = useState([]);
+  const { user } = useAuth();
+  const { activatedProviders, setActivatedProviders } = useProviders();
+  const [providers, _] = useState([...allProviders]);
 
   const handleSelect = (provider) => {
-    if (selected.includes(provider)) {
-      setSelected(selected.filter((item) => item !== provider));
+    // if provider is already on the list, remove it
+    if (activatedProviders.includes(provider)) {
+      setActivatedProviders(
+        activatedProviders.filter((item) => item.id !== provider.id)
+      );
     } else {
-      setSelected([...selected, provider]);
+      // otherwise, add the provider
+      setActivatedProviders([...activatedProviders, provider]);
     }
   };
 
-  const handleSubmit = () => {
-    console.log(selected);
+  const handleSubmit = async () => {
+    await toast.promise(updateUserProviders(user.id, activatedProviders), {
+      success: "Providers list updated.",
+      loading: "Updating list...",
+      error: "An error has ocurred while updating providers.",
+    });
 
     setOpen(false);
   };
@@ -59,10 +74,31 @@ const CustomServices = ({ open, setOpen }) => {
                 <span className="font-display font-bold">Your Services</span>
               </Dialog.Title>
 
+              {/* close button */}
+              <button
+                onClick={() => setOpen(false)}
+                className="absolute top-5 right-6"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+
               <section className="h-[400px] overflow-y-auto providers-list">
                 <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-8">
                   {providers.map((provider) => {
-                    const isSelected = selected.includes(provider);
+                    const isSelected = activatedProviders.includes(provider);
 
                     return (
                       <li key={provider.provider_id}>

@@ -162,7 +162,7 @@ const MovieDetails = ({ movie, related }) => {
                               provider.logo_path
                             )}
                             alt={provider.provider_name}
-                            className="w-16 h-16 object-contain"
+                            className="w-20 h-20 object-contain"
                           />
                         </a>
                       ))}

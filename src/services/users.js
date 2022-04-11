@@ -53,8 +53,19 @@ export const createUser = async (id, credentials) => {
 
     await setDoc(docRef, {
       id,
+      favoritesProviders: [],
       ...credentials,
     });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// update user's providers list
+export const updateUserProviders = async (id, providers) => {
+  try {
+    const docRef = doc(db, "users", id);
+    await setDoc(docRef, { favoritesProviders: providers }, { merge: true });
   } catch (error) {
     console.error(error);
   }
