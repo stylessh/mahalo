@@ -16,9 +16,7 @@ export default async function handler(request, response) {
 
       // remove HBO provider in flatrate
       if (providers.results["DK"]?.flatrate) {
-        providers.results["DK"]?.flatrate = providers.results[
-          "DK"
-        ].flatrate.filter((provider) => provider.provider_id !== 118);
+        providers.results["DK"].flatrate = providers.results["DK"].flatrate.filter((provider) => provider.provider_id !== 118);
       }
 
       return {
