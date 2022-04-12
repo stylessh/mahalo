@@ -7,7 +7,7 @@ import useMovies from "hooks/useMovies";
 const SearchBar = () => {
   const [query, setQuery] = useState("");
   const [hasSearched, setHasSearched] = useState(false)
-  const debouncedQuery = useDebounce(query, 100);
+  const debouncedQuery = useDebounce(query, 300);
 
   const { setTrending } = useMovies();
 
