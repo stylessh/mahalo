@@ -7,8 +7,6 @@ export default async function handler(request, response) {
 
     const ids = decodeURIComponent(providers);
 
-    console.log(ids)
-
     const { data } = await axios.get(
       `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDB_API_KEY}&with_watch_providers=${ids}&watch_region=DK&page=${page}`
     );
