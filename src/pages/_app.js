@@ -1,13 +1,15 @@
 import "styles/globals.css";
 
 import NextNProgress from "nextjs-progressbar";
+import { Toaster } from "react-hot-toast";
 
 import Navbar from "components/Navbar";
-import { Toaster } from "react-hot-toast";
+import Footer from "components/Footer";
 
 import AuthContextProvider from "context/authContext";
 import MoviesContextProvider from "context/moviesContext";
 import ProvidersContextProvider from "context/providersContext";
+
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -31,6 +33,8 @@ function MyApp({ Component, pageProps }) {
           <Component {...pageProps} />
         </ProvidersContextProvider>
       </MoviesContextProvider>
+
+      <Footer />
 
       <Toaster position="bottom-left" />
     </AuthContextProvider>
