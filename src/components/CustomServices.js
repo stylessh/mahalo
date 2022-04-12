@@ -16,9 +16,9 @@ const CustomServices = ({ open, setOpen }) => {
 
   const handleSelect = (provider) => {
     // if provider is already on the list, remove it
-    if (activatedProviders.includes(provider)) {
+    if (activatedProviders.find((item) => item.provider_id === provider.provider_id)) {
       setActivatedProviders(
-        activatedProviders.filter((item) => item.id !== provider.id)
+        activatedProviders.filter((item) => item.provider_id !== provider.provider_id)
       );
     } else {
       // otherwise, add the provider
@@ -98,7 +98,9 @@ const CustomServices = ({ open, setOpen }) => {
               <section className="h-[400px] overflow-y-auto providers-list">
                 <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-8">
                   {providers.map((provider) => {
-                    const isSelected = activatedProviders.includes(provider);
+                    const isSelected = activatedProviders.find(
+                      (item) => item.provider_id === provider.provider_id
+                    );
 
                     return (
                       <li key={provider.provider_id}>
