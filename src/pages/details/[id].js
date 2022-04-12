@@ -8,6 +8,7 @@ import { movieInfo, relatedMovies } from "services/movies";
 import Trailer from "components/Trailer";
 
 import getProviderImage from "utils/getProviderImage";
+import getProviderHomePage from "utils/getProviderHomePage";
 
 const MovieDetails = ({ movie, related }) => {
   const router = useRouter();
@@ -152,7 +153,10 @@ const MovieDetails = ({ movie, related }) => {
                       {movie.providers["flatrate"]?.map((provider) => (
                         <a
                           key={provider.provider_id}
-                          href={movie.providers.link}
+                          href={
+                            getProviderHomePage(provider.provider_id) ||
+                            movie.providers.link
+                          }
                           target="_blank"
                           rel="noreferrer"
                         >
@@ -181,7 +185,10 @@ const MovieDetails = ({ movie, related }) => {
                       {movie.providers["rent"]?.map((provider) => (
                         <a
                           key={provider.provider_id}
-                          href={movie.providers.link}
+                          href={
+                            getProviderHomePage(provider.provider_id) ||
+                            movie.providers.link
+                          }
                           target="_blank"
                           rel="noreferrer"
                         >
@@ -209,7 +216,10 @@ const MovieDetails = ({ movie, related }) => {
                       {movie.providers["buy"]?.map((provider) => (
                         <a
                           key={provider.provider_id}
-                          href={movie.providers.link}
+                          href={
+                            getProviderHomePage(provider.provider_id) ||
+                            movie.providers.link
+                          }
                           target="_blank"
                           rel="noreferrer"
                         >

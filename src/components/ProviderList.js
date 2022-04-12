@@ -39,7 +39,7 @@ const ProviderList = () => {
 
   return (
     <article className="overflow-x-auto">
-      <ul className="w-max mx-auto overflow-x-auto flex items-center space-x-4">
+      <ul className="w-max mx-auto flex items-center space-x-4">
         {providers.map((provider, index) => {
           const isSelected = defaultProvidersSelected.includes(provider.id);
 

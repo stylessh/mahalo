@@ -3,186 +3,175 @@
     "display_priority": 0,
     "logo_path": "/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg",
     "provider_name": "Netflix",
-    "provider_id": 8
+    "provider_id": 8,
+    "provider_homepage": "https://www.netflix.com/"
   },
   {
     "display_priority": 1,
     "logo_path": "/68MNrwlkpF7WnmNPXLah69CR5cb.jpg",
     "provider_name": "Amazon Prime Video",
-    "provider_id": 119
+    "provider_id": 119,
+    "provider_homepage": "https://www.primevideo.com/"
   },
   {
     "display_priority": 1,
     "logo_path": "/68MNrwlkpF7WnmNPXLah69CR5cb.jpg",
     "provider_name": "Amazon Prime Video",
-    "provider_id": 9
+    "provider_id": 9,
+    "provider_homepage": "https://www.primevideo.com/"
   },
   {
     "display_priority": 1,
     "logo_path": "/dgPueyEdOwpQ10fjuhL2WYFQwQs.jpg",
     "provider_name": "Disney Plus",
-    "provider_id": 337
+    "provider_id": 337,
+    "provider_homepage": "https://www.disneyplus.com/"
   },
   {
     "display_priority": 2,
     "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
     "provider_name": "Apple iTunes",
-    "provider_id": 2
+    "provider_id": 2,
+    "provider_homepage": "https://www.apple.com/itunes/"
   },
   {
     "display_priority": 3,
     "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
     "provider_name": "Google Play Movies",
-    "provider_id": 3
-  },
-  {
-    "display_priority": 3,
-    "logo_path": "/vAtH6Z6Oq7zCmEGS3Sdu08dxvYZ.jpg",
-    "provider_name": "HBO",
-    "provider_id": 118
+    "provider_id": 3,
+    "provider_homepage": "https://play.google.com/store/movies"
   },
   {
     "display_priority": 4,
     "logo_path": "/hM63nVYfsXPVgrMSkU5x01sP1jG.jpg",
     "provider_name": "C More",
-    "provider_id": 77
-  },
-  {
-    "display_priority": 5,
-    "logo_path": "/2slPVV21kaPDx0NwjVtcUjdvzXz.jpg",
-    "provider_name": "HBO Go",
-    "provider_id": 31
+    "provider_id": 77,
+    "provider_homepage": "https://www.cmore.dk/"
   },
   {
     "display_priority": 5,
     "logo_path": "/okuStqHQL2ImgtNxNM40La91u3A.jpg",
     "provider_name": "Viaplay",
-    "provider_id": 76
+    "provider_id": 76,
+    "provider_homepage": "https://www.viaplay.dk/"
   },
   {
     "display_priority": 6,
     "logo_path": "/kXQQbZ6ZvTwojzMPivQF9sX0V4y.jpg",
     "provider_name": "Mubi",
-    "provider_id": 11
+    "provider_id": 11,
+    "provider_homepage": "https://www.mubi.com/"
   },
   {
     "display_priority": 7,
     "logo_path": "/aS2zvJWn9mwiCOeaaCkIh4wleZS.jpg",
     "provider_name": "HBO Max",
-    "provider_id": 384
+    "provider_id": 384,
+    "provider_homepage": "https://www.hbomax.com/"
   },
   {
     "display_priority": 8,
     "logo_path": "/7IF7BHgNB20PKk37EExLQcWTYaB.jpg",
     "provider_name": "Netflix Kids",
-    "provider_id": 175
+    "provider_id": 175,
+    "provider_homepage": "https://www.netflix.com/kids"
   },
   {
     "display_priority": 9,
     "logo_path": "/8RmTC5mVDSNV2yRsOVuJToPsUUy.jpg",
     "provider_name": "TV 2",
-    "provider_id": 383
+    "provider_id": 383,
+    "provider_homepage": "https://www.tv2.dk/"
   },
   {
     "display_priority": 10,
     "logo_path": "/sVBEF7q7LqjHAWSnKwDbzmr2EMY.jpg",
     "provider_name": "Amazon Video",
-    "provider_id": 10
+    "provider_id": 10,
+    "provider_homepage": "https://www.amazon.com/video/"
   },
   {
     "display_priority": 11,
     "logo_path": "/A3WLxoSkmuxwaQkpfwL6H8WwWwM.jpg",
     "provider_name": "Apple TV Plus",
-    "provider_id": 350
-  },
-  {
-    "display_priority": 11,
-    "logo_path": "/12w89KdhlruBTJEkHR0kMKKgLKx.jpg",
-    "provider_name": "HBO Go",
-    "provider_id": 425
+    "provider_id": 350,
+    "provider_homepage": "https://www.apple.com/tv/"
   },
   {
     "display_priority": 12,
     "logo_path": "/vDCcryHD32b0yMeSCgBhuYavsmx.jpg",
     "provider_name": "YouTube",
-    "provider_id": 192
-  },
-  {
-    "display_priority": 13,
-    "logo_path": "/hvVCDCBcmj8ouq5T18P5g2qfaNc.jpg",
-    "provider_name": "YouTube Premium",
-    "provider_id": 188
-  },
-  {
-    "display_priority": 13,
-    "logo_path": "/dgPueyEdOwpQ10fjuhL2WYFQwQs.jpg",
-    "provider_name": "Disney Plus",
-    "provider_id": 390
-  },
-  {
-    "display_priority": 14,
-    "logo_path": "/zqPiJW4AeaR7UQV1jupvCyv4RJy.jpg",
-    "provider_name": "YouTube Free",
-    "provider_id": 235
+    "provider_id": 192,
+    "provider_homepage": "https://www.youtube.com/feed/storefront"
   },
   {
     "display_priority": 16,
     "logo_path": "/pkAHkRhIq3Iu0ZlEhDzbguSlyZF.jpg",
     "provider_name": "Paramount Plus",
-    "provider_id": 531
+    "provider_id": 531,
+    "provider_homepage": "https://www.paramountplus.com/"
   },
   {
     "display_priority": 18,
     "logo_path": "/wuViyDkbFp4r7VqI0efPW5hFfQj.jpg",
     "provider_name": "Rakuten TV",
-    "provider_id": 35
+    "provider_id": 35,
+    "provider_homepage": "https://rakuten.tv/dk/"
   },
   {
     "display_priority": 18,
     "logo_path": "/4DrvzomVasfWYZ1FN2YwFzANcNx.jpg",
     "provider_name": "Telia Play",
-    "provider_id": 553
+    "provider_id": 553,
+    "provider_homepage": "https://www.teliaplay.se/"
   },
   {
     "display_priority": 19,
     "logo_path": "/2irzpx5DK6PhmTOz4qiskLmVnT3.jpg",
     "provider_name": "IMDb TV",
-    "provider_id": 238
+    "provider_id": 238,
+    "provider_homepage": "https://www.imdb.com/tv/"
   },
   {
     "display_priority": 19,
     "logo_path": "/oEntjkQyz84qo1C4FZK9jW1qznl.jpg",
     "provider_name": "Blockbuster",
-    "provider_id": 423
+    "provider_id": 423,
+    "provider_homepage": "https://www.blockbuster.dk/"
   },
   {
     "display_priority": 20,
     "logo_path": "/yEbC1a22QZul3KGjeZ1OZjcN4u6.jpg",
     "provider_name": "SF Anytime",
-    "provider_id": 426
+    "provider_id": 426,
+    "provider_homepage": "https://www.sfanytime.com/"
   },
   {
     "display_priority": 20,
     "logo_path": "/7vuvJTtOrAnFxezXYzFa1BSJGFJ.jpg",
     "provider_name": "Filmstriben",
-    "provider_id": 443
+    "provider_id": 443,
+    "provider_homepage": "https://www.filmstriben.dk/"
   },
   {
     "display_priority": 35,
     "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
     "provider_name": "Microsoft Store",
-    "provider_id": 68
+    "provider_id": 68,
+    "provider_homepage": "https://www.microsoft.com/da-dk/store/movies-and-tv"
   },
   {
     "display_priority": 125,
     "logo_path": "/4lGoNHt7Qd2rRXS03KsKvqDjXFE.jpg",
     "provider_name": "FlixFling",
-    "provider_id": 331
+    "provider_id": 331,
+    "provider_homepage": "https://www.flixfling.com/"
   },
   {
     "display_priority": 128,
     "logo_path": "/lIbQ2z8C5iZx2mFqWcRpCz0DhIB.jpg",
     "provider_name": "Rakuten Viki",
-    "provider_id": 344
+    "provider_id": 344,
+    "provider_homepage": "https://www.viki.com"
   }
 ]
