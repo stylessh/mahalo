@@ -50,11 +50,11 @@ const ProviderList = () => {
               onClick={() => searchByProvider(provider.id)}
             >
               <img
-                src={`/assets/providers/${provider.badge}`}
-                alt={provider.name}
-                className={`object-cover w-full h-full rounded-md select-none ${
-                  custom ? `${isSelected ? "" : "grayscale"}` : ""
+                src={`/assets/providers/${
+                  isSelected ? provider.badge : provider.unselectedBadge
                 }`}
+                alt={provider.name}
+                className={`object-cover w-full h-full rounded-md select-none`}
               />
             </button>
           );

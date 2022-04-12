@@ -2,29 +2,34 @@
   {
     "id": 8,
     "name": "Netflix",
-    "badge": "NetflixBadge.png"
+    "badge": "NetflixBadge.png",
+    "unselectedBadge": "NetflixBadgeUnselected.png"
   },
 
   {
     "id": 9,
     "name": "Prime Video",
-    "badge": "Prime VideoBadge.png"
+    "badge": "Prime VideoBadge.png",
+    "unselectedBadge": "Prime VideoBadgeUnselected.png"
   },
 
   {
     "id": 337,
     "name": "Disney",
-    "badge": "DisneyBadge.png"
+    "badge": "DisneyBadge.png",
+    "unselectedBadge": "DisneyBadgeUnselected.png"
   },
 
   {
     "id": 76,
     "name": "Viaplay",
-    "badge": "ViaplayBadge.png"
+    "badge": "ViaplayBadge.png",
+    "unselectedBadge": "ViaplayBadgeUnselected.png"
   },
   {
     "id": 384,
     "name": "HBO Max",
-    "badge": "HBO MaxBadge.png"
+    "badge": "HBO MaxBadge.png",
+    "unselectedBadge": "HBO MaxBadgeUnselected.png"
   }
 ]
