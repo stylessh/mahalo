@@ -5,12 +5,26 @@ import ProviderList from "./ProviderList";
 import AllServices from "./Tabs/AllServices";
 import MyServices from "./Tabs/MyServices";
 import CustomServices from "./CustomServices";
+import useProviders from "hooks/useProviders";
 
 const Tabs = () => {
   const [openProvidersModal, setOpenProvidersModal] = useState(false);
+  const { setCustom } = useProviders();
+
+  const handleTabChange = (index) => {
+    if (index === 1) {
+      setCustom(true);
+    } else {
+      setCustom(false);
+    }
+  };
 
   return (
-    <Tab.Group as="section" className="relative w-[90%] mx-auto z-10">
+    <Tab.Group
+      as="section"
+      className="relative w-[90%] mx-auto z-10"
+      onChange={handleTabChange}
+    >
       <Tab.List
         as="ul"
         className="w-[90%] mx-auto mb-10 text-xl flex justify-between items-center md:w-max md:space-x-12 md:text-2xl text-white"

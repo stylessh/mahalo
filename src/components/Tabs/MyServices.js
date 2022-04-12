@@ -27,10 +27,10 @@ const MyServices = () => {
     setCustomMovies,
     customMoviesPage,
     setCustomMoviesPage,
+    loading,
+    setLoading,
   } = useMovies();
   const { providersIds } = useProviders();
-
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (customMovies.length === 0) {

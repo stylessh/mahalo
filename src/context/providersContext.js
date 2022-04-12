@@ -10,6 +10,10 @@ const initial = {
 
   providersIds: [],
   setProvidersIds: () => {},
+
+  custom: false,
+  setCustom: () => {},
+
 };
 
 import data from "providers.json";
@@ -21,6 +25,10 @@ export default function ProvidersContextProvider({ children }) {
   const [providers, setProviders] = useState([...data]);
   const [activatedProviders, setActivatedProviders] = useState([]);
   const [providersIds, setProvidersIds] = useState([]);
+
+
+  // state between all and custom providers
+  const [custom, setCustom] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -47,6 +55,9 @@ export default function ProvidersContextProvider({ children }) {
 
     providersIds,
     setProvidersIds,
+
+    custom,
+    setCustom,
   };
 
   return (

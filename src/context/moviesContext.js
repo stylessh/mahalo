@@ -12,6 +12,9 @@ const initial = {
 
   customMoviesPage: 1,
   setCustomMoviesPage: null,
+
+  loading: false,
+  setLoading: () => {},
 };
 
 export const MoviesContext = createContext(initial);
@@ -22,6 +25,8 @@ export default function MoviesContextProvider({ children }) {
 
   const [customMovies, setCustomMovies] = useState([]);
   const [customMoviesPage, setCustomMoviesPage] = useState(1);
+
+  const [loading, setLoading] = useState(false);
 
   const value = {
     trending,
@@ -35,6 +40,9 @@ export default function MoviesContextProvider({ children }) {
 
     customMoviesPage,
     setCustomMoviesPage,
+
+    loading,
+    setLoading,
   };
 
   return (

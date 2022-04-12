@@ -1,10 +1,12 @@
+import { useEffect } from "react";
 import Link from "next/link";
-import getProviderImage from "utils/getProviderImage";
-
+import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
 
+import getProviderImage from "utils/getProviderImage";
+
 import useMovies from "hooks/useMovies";
-import axios from "axios";
+import useProviders from "hooks/useProviders";
 
 const EndMessage = () => (
   <p className="absolute bottom-0 text-white font-bold left-2/4">
