@@ -6,18 +6,22 @@ import useProviders from "hooks/useProviders";
 const ProviderList = () => {
   const { setCustomMovies, customMoviesPage, setCustomMoviesPage, setLoading } =
     useMovies();
-  const { providers, custom } = useProviders();
-
-  const [selectedProvider, setSelectedProvider] = useState(null);
+  const {
+    providers,
+    custom,
+    defaultProvidersSelected,
+    setDefaultProvidersSelected,
+  } = useProviders();
 
   const searchByProvider = async (id) => {
-    setSelectedProvider(id);
+    setDefaultProvidersSelected([...defaultProvidersSelected, id]);
+
     setLoading(true);
     setCustomMoviesPage(1);
 
     const { data } = await axios.get("/api/movies/custom", {
       params: {
-        providers: id,
+        providers: [...defaultProvidersSelected, id].join("|"),
         page: customMoviesPage,
       },
     });
@@ -30,7 +34,7 @@ const ProviderList = () => {
     <article>
       <ul className="w-max mx-auto overflow-x-auto flex items-center space-x-4">
         {providers.map((provider, index) => {
-          const isSelected = selectedProvider === provider.id;
+          const isSelected = defaultProvidersSelected.includes(provider.id);
 
           return (
             <button

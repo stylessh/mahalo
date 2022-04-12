@@ -14,6 +14,8 @@ const initial = {
   custom: false,
   setCustom: () => {},
 
+  defaultProvidersSelected: [],
+  setDefaultProvidersSelected: () => {},
 };
 
 import data from "providers.json";
@@ -26,6 +28,7 @@ export default function ProvidersContextProvider({ children }) {
   const [activatedProviders, setActivatedProviders] = useState([]);
   const [providersIds, setProvidersIds] = useState([]);
 
+  const [defaultProvidersSelected, setDefaultProvidersSelected] = useState([]);
 
   // state between all and custom providers
   const [custom, setCustom] = useState(false);
@@ -58,6 +61,9 @@ export default function ProvidersContextProvider({ children }) {
 
     custom,
     setCustom,
+
+    defaultProvidersSelected,
+    setDefaultProvidersSelected,
   };
 
   return (
