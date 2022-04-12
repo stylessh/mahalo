@@ -1,3 +1,5 @@
+import redirects from "redirects.json";
+
 export default function getProviderImage(providerId, providerOriginalImage) {
   const provider = {
     8: "Netflix",
@@ -8,6 +10,10 @@ export default function getProviderImage(providerId, providerOriginalImage) {
     384: "HBO Max",
     118: "HBO Max",
   };
+
+  if (redirects[providerId]) {
+    providerId = redirects[providerId];
+  }
 
   //   return url image based on provider id
   if (provider[providerId])

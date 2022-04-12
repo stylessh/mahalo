@@ -106,8 +106,8 @@ const CustomServices = ({ open, setOpen }) => {
                       <li key={provider.provider_id}>
                         <button
                           onClick={() => handleSelect(provider)}
-                          className={`flex items-center outline-none w-full ${
-                            isSelected ? "text-white" : "text-gray-500"
+                          className={`flex items-center outline-none w-full border-2 p-2 ${
+                            isSelected ? "text-white border-2 border-light rounded-md" : "text-gray-500 border-transparent"
                           } hover:text-white`}
                         >
                           <img
