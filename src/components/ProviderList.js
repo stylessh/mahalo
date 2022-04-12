@@ -1,4 +1,3 @@
-import { useState } from "react";
 import axios from "axios";
 import useMovies from "hooks/useMovies";
 import useProviders from "hooks/useProviders";
@@ -14,7 +13,15 @@ const ProviderList = () => {
   } = useProviders();
 
   const searchByProvider = async (id) => {
-    setDefaultProvidersSelected([...defaultProvidersSelected, id]);
+    // if already selected, remove selected
+
+    if (defaultProvidersSelected.includes(id)) {
+      setDefaultProvidersSelected(
+        defaultProvidersSelected.filter((provider) => provider !== id)
+      );
+    } else {
+      setDefaultProvidersSelected([...defaultProvidersSelected, id]);
+    }
 
     setLoading(true);
     setCustomMoviesPage(1);
@@ -31,7 +38,7 @@ const ProviderList = () => {
   };
 
   return (
-    <article>
+    <article className="overflow-x-auto">
       <ul className="w-max mx-auto overflow-x-auto flex items-center space-x-4">
         {providers.map((provider, index) => {
           const isSelected = defaultProvidersSelected.includes(provider.id);
@@ -40,7 +47,6 @@ const ProviderList = () => {
             <button
               key={index}
               className="w-[200px] outline-none"
-              disabled={!custom}
               onClick={() => searchByProvider(provider.id)}
             >
               <img
