@@ -70,7 +70,7 @@ export default function AuthContextProvider({ children }) {
 
       return null;
     } catch (error) {
-      return "Usuario no encontrado, verifica tus credenciales.";
+      return "User not found, check your credentials.";
     }
   };
 
