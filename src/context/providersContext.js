@@ -64,13 +64,17 @@ export default function ProvidersContextProvider({ children }) {
       const providersIds = data.map((provider) => provider.id);
       // set default providers selected to all providers
 
-      const activatedProvidersId = user.favoritesProviders.map(
-        (provider) => provider.provider_id
-      );
+      if (user) {
+        const activatedProvidersId = user.favoritesProviders.map(
+          (provider) => provider.provider_id
+        );
 
-      setDefaultProvidersSelected([
-        ...new Set([...providersIds, ...activatedProvidersId]),
-      ]);
+        setDefaultProvidersSelected([
+          ...new Set([...providersIds, ...activatedProvidersId]),
+        ]);
+      } else {
+        setDefaultProvidersSelected([...providersIds]);
+      }
     }
   }, [tabIndex]);
 
