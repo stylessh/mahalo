@@ -116,7 +116,7 @@ const CustomServices = ({ open, setOpen }) => {
               </button>
 
               <section className="h-[400px] overflow-y-auto providers-list">
-                <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-8">
+                <ul className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
                   {providers.map((provider) => {
                     const isSelected = activatedProviders.find(
                       (item) => item.provider_id === provider.provider_id
@@ -138,12 +138,8 @@ const CustomServices = ({ open, setOpen }) => {
                               provider.logo_path
                             )}
                             alt={provider.provider_name}
-                            className="w-14 h-14 object-contain rounded-md mr-4"
+                            className="h-12 object-contain rounded-md mx-auto w-[132px]"
                           />
-
-                          <h4 className="font-bold text-left text-sm transition">
-                            {provider.provider_name}
-                          </h4>
                         </button>
                       </li>
                     );

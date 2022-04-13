@@ -72,7 +72,7 @@ export default function ProvidersContextProvider({ children }) {
         ...new Set([...providersIds, ...activatedProvidersId]),
       ]);
     }
-  }, [user, tabIndex]);
+  }, [tabIndex]);
 
   useEffect(() => {
     if (!firstRender) {

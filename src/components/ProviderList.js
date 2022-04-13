@@ -1,10 +1,17 @@
 import axios from "axios";
+import useAuth from "hooks/useAuth";
 import useMovies from "hooks/useMovies";
 import useProviders from "hooks/useProviders";
+import { updateUserProviders } from "services/users";
+
+import allProviders from "data.json";
 
 const ProviderList = () => {
+  const { user, refreshUser } = useAuth();
+
   const { setCustomMovies, customMoviesPage, setCustomMoviesPage, setLoading } =
     useMovies();
+
   const {
     providers,
     defaultProvidersSelected,
@@ -29,6 +36,14 @@ const ProviderList = () => {
       setLoading(true);
       setCustomMoviesPage(1);
 
+      const providers = user.favoritesProviders.filter(
+        (provider) => provider.provider_id !== id
+      );
+
+      // remove provider to user custom list
+      await updateUserProviders(user.id, providers);
+      await refreshUser(user.id);
+
       const { data } = await axios.get("/api/movies/custom", {
         params: {
           providers: [
@@ -46,6 +61,17 @@ const ProviderList = () => {
 
       setLoading(true);
       setCustomMoviesPage(1);
+
+      const provider = allProviders.find(
+        (provider) => provider.provider_id === id
+      );
+
+      // add provider to user custom list
+      await updateUserProviders(user.id, [
+        ...user.favoritesProviders,
+        provider,
+      ]);
+      await refreshUser(user.id);
 
       const { data } = await axios.get("/api/movies/custom", {
         params: {

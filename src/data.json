@@ -21,13 +21,6 @@
     "provider_homepage": "https://www.disneyplus.com/"
   },
   {
-    "display_priority": 2,
-    "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
-    "provider_name": "Apple iTunes",
-    "provider_id": 2,
-    "provider_homepage": "https://www.apple.com/itunes/"
-  },
-  {
     "display_priority": 3,
     "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
     "provider_name": "Google Play Movies",
@@ -77,13 +70,6 @@
     "provider_homepage": "https://www.tv2.dk/"
   },
   {
-    "display_priority": 10,
-    "logo_path": "/sVBEF7q7LqjHAWSnKwDbzmr2EMY.jpg",
-    "provider_name": "Amazon Video",
-    "provider_id": 10,
-    "provider_homepage": "https://www.amazon.com/video/"
-  },
-  {
     "display_priority": 11,
     "logo_path": "/A3WLxoSkmuxwaQkpfwL6H8WwWwM.jpg",
     "provider_name": "Apple TV Plus",
@@ -110,13 +96,6 @@
     "provider_name": "Rakuten TV",
     "provider_id": 35,
     "provider_homepage": "https://rakuten.tv/dk/"
-  },
-  {
-    "display_priority": 18,
-    "logo_path": "/4DrvzomVasfWYZ1FN2YwFzANcNx.jpg",
-    "provider_name": "Telia Play",
-    "provider_id": 553,
-    "provider_homepage": "https://www.teliaplay.se/"
   },
   {
     "display_priority": 19,
