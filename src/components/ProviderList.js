@@ -9,6 +9,8 @@ const ProviderList = () => {
     providers,
     defaultProvidersSelected,
     setDefaultProvidersSelected,
+    providersIds,
+    setProvidersIds,
     tabIndex,
     setTabIndex,
   } = useProviders();
@@ -19,27 +21,47 @@ const ProviderList = () => {
       setDefaultProvidersSelected(
         defaultProvidersSelected.filter((provider) => provider !== id)
       );
+
+      setProvidersIds([
+        ...new Set(providersIds.filter((provider) => provider !== id)),
+      ]);
+
+      setLoading(true);
+      setCustomMoviesPage(1);
+
+      const { data } = await axios.get("/api/movies/custom", {
+        params: {
+          providers: [
+            ...new Set(providersIds.filter((provider) => provider !== id)),
+          ].join("|"),
+          page: customMoviesPage,
+        },
+      });
+
+      setCustomMovies(data);
+      setLoading(false);
     } else {
       setDefaultProvidersSelected([...defaultProvidersSelected, id]);
+      setProvidersIds([...new Set([...providersIds, id])]);
+
+      setLoading(true);
+      setCustomMoviesPage(1);
+
+      const { data } = await axios.get("/api/movies/custom", {
+        params: {
+          providers: [...new Set([...providersIds, id])].join("|"),
+          page: customMoviesPage,
+        },
+      });
+
+      setCustomMovies(data);
+      setLoading(false);
     }
 
     // if it's the first tab, change to custom
     if (tabIndex === 0) {
       setTabIndex(1);
     }
-
-    setLoading(true);
-    setCustomMoviesPage(1);
-
-    const { data } = await axios.get("/api/movies/custom", {
-      params: {
-        providers: [...defaultProvidersSelected, id].join("|"),
-        page: customMoviesPage,
-      },
-    });
-
-    setCustomMovies(data);
-    setLoading(false);
   };
 
   return (

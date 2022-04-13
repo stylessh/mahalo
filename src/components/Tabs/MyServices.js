@@ -36,6 +36,8 @@ const MyServices = () => {
     if (customMovies.length === 0) {
       setLoading(true);
 
+      console.log(providersIds)
+
       axios
         .get("/api/movies/custom", {
           params: {

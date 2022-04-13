@@ -1,24 +1,35 @@
 import { Fragment, useState } from "react";
 import { Transition, Dialog } from "@headlessui/react";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 import allProviders from "data.json";
 import getProviderImage from "utils/getProviderImage";
 
 import { updateUserProviders } from "services/users";
 import useAuth from "hooks/useAuth";
-import toast from "react-hot-toast";
 import useProviders from "hooks/useProviders";
+
+import useMovies from "hooks/useMovies";
 
 const CustomServices = ({ open, setOpen }) => {
   const { user } = useAuth();
-  const { activatedProviders, setActivatedProviders } = useProviders();
+  const { customMoviesPage, setCustomMovies } = useMovies();
+  const { activatedProviders, setActivatedProviders, providersIds } =
+    useProviders();
   const [providers, _] = useState([...allProviders]);
 
   const handleSelect = (provider) => {
     // if provider is already on the list, remove it
-    if (activatedProviders.find((item) => item.provider_id === provider.provider_id)) {
+    if (
+      activatedProviders.find(
+        (item) => item.provider_id === provider.provider_id
+      )
+    ) {
       setActivatedProviders(
-        activatedProviders.filter((item) => item.provider_id !== provider.provider_id)
+        activatedProviders.filter(
+          (item) => item.provider_id !== provider.provider_id
+        )
       );
     } else {
       // otherwise, add the provider
@@ -32,6 +43,15 @@ const CustomServices = ({ open, setOpen }) => {
       loading: "Updating list...",
       error: "An error has ocurred while updating providers.",
     });
+
+    const { data } = await axios.get("/api/movies/custom", {
+      params: {
+        providers: [...new Set(providersIds)].join("|"),
+        page: customMoviesPage,
+      },
+    });
+
+    setCustomMovies(data);
 
     setOpen(false);
   };
@@ -107,7 +127,9 @@ const CustomServices = ({ open, setOpen }) => {
                         <button
                           onClick={() => handleSelect(provider)}
                           className={`flex items-center outline-none w-full border-2 p-2 ${
-                            isSelected ? "text-white border-2 border-light rounded-md" : "text-gray-500 border-transparent"
+                            isSelected
+                              ? "text-white border-2 border-light rounded-md"
+                              : "text-gray-500 border-transparent"
                           } hover:text-white`}
                         >
                           <img

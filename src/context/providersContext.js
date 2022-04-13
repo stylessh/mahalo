@@ -31,7 +31,11 @@ export default function ProvidersContextProvider({ children }) {
   const [activatedProviders, setActivatedProviders] = useState([]);
   const [providersIds, setProvidersIds] = useState([]);
 
-  const [defaultProvidersSelected, setDefaultProvidersSelected] = useState([]);
+  const [firstRender, setFirstRender] = useState(true);
+
+  const [defaultProvidersSelected, setDefaultProvidersSelected] = useState([
+    ...data.map((provider) => provider.id),
+  ]);
 
   const [tabIndex, setTabIndex] = useState(0);
 
@@ -41,6 +45,14 @@ export default function ProvidersContextProvider({ children }) {
   useEffect(() => {
     if (user) {
       setActivatedProviders([...user.favoritesProviders]);
+
+      const activatedProvidersId = user.favoritesProviders.map(
+        (provider) => provider.provider_id
+      );
+
+      setProvidersIds([
+        ...new Set([...defaultProvidersSelected, ...activatedProvidersId]),
+      ]);
     } else {
       setActivatedProviders([]);
     }
@@ -52,16 +64,26 @@ export default function ProvidersContextProvider({ children }) {
       const providersIds = data.map((provider) => provider.id);
       // set default providers selected to all providers
 
-      setDefaultProvidersSelected(providersIds);
+      const activatedProvidersId = user.favoritesProviders.map(
+        (provider) => provider.provider_id
+      );
+
+      setDefaultProvidersSelected([
+        ...new Set([...providersIds, ...activatedProvidersId]),
+      ]);
     }
   }, [user, tabIndex]);
 
   useEffect(() => {
-    if (activatedProviders.length > 0) {
-      setProvidersIds(
-        activatedProviders.map((provider) => provider.provider_id)
+    if (!firstRender) {
+      const activatedProvidersId = activatedProviders.map(
+        (provider) => provider.provider_id
       );
+
+      setProvidersIds([...new Set([...providersIds, ...activatedProvidersId])]);
     }
+
+    setFirstRender(false);
   }, [activatedProviders]);
 
   const value = {
