@@ -7,15 +7,25 @@ import MyServices from "./Tabs/MyServices";
 import CustomServices from "./CustomServices";
 import useProviders from "hooks/useProviders";
 
+import data from "providers.json";
+
 const Tabs = () => {
   const [openProvidersModal, setOpenProvidersModal] = useState(false);
-  const { setCustom } = useProviders();
+  const { setCustom, setDefaultProvidersSelected, tabIndex, setTabIndex } =
+    useProviders();
 
   const handleTabChange = (index) => {
     if (index === 1) {
       setCustom(true);
+      setTabIndex(1);
     } else {
       setCustom(false);
+
+      const providersIds = data.map((provider) => provider.id);
+      // set default providers selected to all providers
+      setDefaultProvidersSelected(providersIds);
+
+      setTabIndex(0);
     }
   };
 
@@ -23,6 +33,7 @@ const Tabs = () => {
     <Tab.Group
       as="section"
       className="relative w-[90%] mx-auto z-10"
+      selectedIndex={tabIndex}
       onChange={handleTabChange}
     >
       <Tab.List

@@ -16,6 +16,9 @@ const initial = {
 
   defaultProvidersSelected: [],
   setDefaultProvidersSelected: () => {},
+
+  tabIndex: 0,
+  setTabIndex: () => {},
 };
 
 import data from "providers.json";
@@ -30,6 +33,8 @@ export default function ProvidersContextProvider({ children }) {
 
   const [defaultProvidersSelected, setDefaultProvidersSelected] = useState([]);
 
+  const [tabIndex, setTabIndex] = useState(0);
+
   // state between all and custom providers
   const [custom, setCustom] = useState(false);
 
@@ -40,6 +45,16 @@ export default function ProvidersContextProvider({ children }) {
       setActivatedProviders([]);
     }
   }, [user]);
+
+  useEffect(() => {
+    // if its all providers, set all default providers selected
+    if (tabIndex === 0) {
+      const providersIds = data.map((provider) => provider.id);
+      // set default providers selected to all providers
+
+      setDefaultProvidersSelected(providersIds);
+    }
+  }, [user, tabIndex]);
 
   useEffect(() => {
     if (activatedProviders.length > 0) {
@@ -64,6 +79,9 @@ export default function ProvidersContextProvider({ children }) {
 
     defaultProvidersSelected,
     setDefaultProvidersSelected,
+
+    tabIndex,
+    setTabIndex,
   };
 
   return (

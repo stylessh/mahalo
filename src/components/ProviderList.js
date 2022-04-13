@@ -7,20 +7,25 @@ const ProviderList = () => {
     useMovies();
   const {
     providers,
-    custom,
     defaultProvidersSelected,
     setDefaultProvidersSelected,
+    tabIndex,
+    setTabIndex,
   } = useProviders();
 
   const searchByProvider = async (id) => {
     // if already selected, remove selected
-
     if (defaultProvidersSelected.includes(id)) {
       setDefaultProvidersSelected(
         defaultProvidersSelected.filter((provider) => provider !== id)
       );
     } else {
       setDefaultProvidersSelected([...defaultProvidersSelected, id]);
+    }
+
+    // if it's the first tab, change to custom
+    if (tabIndex === 0) {
+      setTabIndex(1);
     }
 
     setLoading(true);
