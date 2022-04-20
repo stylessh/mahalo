@@ -32,19 +32,20 @@ const SignIn = () => {
   };
 
   return (
-    <article className="w-[90%] mx-auto p-8 md:p-16 overflow-hidden transition-all transform bg-dark shadow-xl rounded-2xl border-2 border-gray-500">
-      <h3 className="text-white font-display font-bold text-xl md:text-3xl pb-4 text-center">
-        Welcome back, please log in!
+    <article className="w-[90%] mx-auto p-8 overflow-hidden transition-all transform bg-transparent rounded-2xl">
+      <h3 className="text-white text-sm pb-4 text-center">
+        We are right now running a BETA test of our website. <br /> You can only
+        enter if you have an login.
       </h3>
 
-      <form className="my-4 space-y-4">
+      <form className="my-4 space-y-4 outline-none">
         <input
           type="email"
           placeholder="Email address"
           name="email"
           value={credentials.email}
           onChange={handleChange}
-          className="w-full py-2 px-4 bg-transparent border border-gray-600 rounded-lg outline-none text-white font-tight placeholder:text-gray-600"
+          className="w-full py-2 px-4 bg-black bg-opacity-80 border border-white rounded-2xl outline-none text-white font-tight placeholder:text-white"
         />
 
         <input
@@ -53,14 +54,9 @@ const SignIn = () => {
           name="password"
           value={credentials.password}
           onChange={handleChange}
-          className="w-full py-2 px-4 bg-transparent border border-gray-600 rounded-lg outline-none text-white font-tight placeholder:text-gray-600"
+          className="w-full py-2 px-4 bg-black bg-opacity-80 border border-white rounded-2xl outline-none text-white font-tight placeholder:text-white"
         />
       </form>
-
-      <button className="mb-6 text-sm text-gray-500 hover:underline">
-        {"Don't have an account? "}
-        <span className="text-light">Create one</span>
-      </button>
 
       <button
         onClick={async (e) => await handleSubmit(e)}

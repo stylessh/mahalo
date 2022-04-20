@@ -68,7 +68,7 @@ const Tabs = () => {
           onClick={() => setOpenProvidersModal(true)}
           className={`border-b-4 border-transparent hover:border-purple-400 rounded-md`}
         >
-          Custome
+          Custom
         </button>
       </Tab.List>
 

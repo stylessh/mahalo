@@ -11,31 +11,9 @@ import useAuth from "hooks/useAuth";
 import Head from "next/head";
 import WhatIsMahalo from "components/WhatIsMahalo";
 
-const LoginMessage = () => {
-  return (
-    <p className="text-white text-center my-6 px-4">
-      We are right now running a BETA test of our website. You can only enter if
-      you have an login.
-    </p>
-  );
-};
-
-const RegisterMessage = ({ setOpen }) => {
-  return (
-    <p className="text-white text-center my-6 px-4">
-      Be the first one to enter our final stage. Sign up now! <br />
-      <button onClick={() => setOpen(true)}>
-        What is <span className="text-light font-bold">MahaloTV</span>
-      </button>
-    </p>
-  );
-};
-
 const Start = () => {
   const { user } = useAuth();
   const { push } = useRouter();
-
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [mahaloModal, setMahaloModal] = useState(false);
 
   if (user) push("/");
@@ -52,24 +30,28 @@ const Start = () => {
         <title>Mahalo TV - Get started.</title>
       </Head>
 
-      <article className="text-center">
+      {/* black overlay */}
+      <div
+        className="fixed inset-0 w-screen h-screen bg-black opacity-50"
+        style={{
+          zIndex: 0,
+        }}
+      ></div>
+
+      <article className="text-center z-10">
         {/* logo */}
 
-        <Logo center />
+        <Logo center big />
 
-        <Tab.Group
-          onChange={(index) => {
-            setCurrentIndex(index);
-          }}
-        >
+        <Tab.Group>
           <Tab.List
             as="ul"
-            className="w-max mx-auto space-x-12 text-xl flex justify-between items-center md:text-2xl text-white"
+            className="w-max mx-auto space-x-8 text-xl mt-6 flex justify-between items-center md:text-2xl text-white"
           >
             <Tab as={Fragment}>
               {({ selected }) => (
                 <button
-                  className={`border-b-4 border-transparent hover:border-purple-400 rounded-md ${
+                  className={`border-b-4 border-transparent text-base font-bold hover:border-purple-400 rounded-md ${
                     selected && "border-purple-400"
                   }`}
                 >
@@ -81,7 +63,7 @@ const Start = () => {
             <Tab as={Fragment}>
               {({ selected }) => (
                 <button
-                  className={`border-b-4 border-transparent hover:border-purple-400 rounded-md ${
+                  className={`border-b-4 border-transparent text-base font-bold hover:border-purple-400 rounded-md ${
                     selected && "border-purple-400"
                   }`}
                 >
@@ -91,9 +73,6 @@ const Start = () => {
             </Tab>
           </Tab.List>
 
-          {currentIndex === 0 && <LoginMessage />}
-          {currentIndex === 1 && <RegisterMessage setOpen={setMahaloModal} />}
-
           {/* Tab components */}
 
           <Tab.Panels>
@@ -101,7 +80,7 @@ const Start = () => {
               <SignIn />
             </Tab.Panel>
             <Tab.Panel>
-              <SignUp />
+              <SignUp setOpen={setMahaloModal} />
             </Tab.Panel>
           </Tab.Panels>
         </Tab.Group>

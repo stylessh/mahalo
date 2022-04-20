@@ -40,6 +40,11 @@ const ProviderList = () => {
         (provider) => provider.provider_id !== id
       );
 
+      // if it's the first tab, change to custom
+      if (tabIndex === 0) {
+        setTabIndex(1);
+      }
+
       // remove provider to user custom list
       await updateUserProviders(user.id, providers);
       await refreshUser(user.id);
@@ -82,11 +87,6 @@ const ProviderList = () => {
 
       setCustomMovies(data);
       setLoading(false);
-    }
-
-    // if it's the first tab, change to custom
-    if (tabIndex === 0) {
-      setTabIndex(1);
     }
   };
 

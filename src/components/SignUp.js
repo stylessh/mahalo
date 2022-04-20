@@ -4,8 +4,8 @@ import { toast } from "react-hot-toast";
 
 import useAuth from "hooks/useAuth";
 
-const SignUp = () => {
-  const { signUp, setOpenSignIn, setOpenSignUp } = useAuth();
+const SignUp = ({ setOpen }) => {
+  const { signUp } = useAuth();
 
   const [credentials, setCredentials] = useState({
     email: "",
@@ -35,9 +35,12 @@ const SignUp = () => {
   };
 
   return (
-    <article className="w-[90%] mx-auto p-8 md:p-16 overflow-hidden transition-all transform bg-dark shadow-xl rounded-2xl border-2 border-gray-500">
-      <h3 className="text-white font-display font-bold text-xl md:text-3xl pb-4">
-        Registration
+    <article className="w-[90%] md:w-[60%] mx-auto p-8 overflow-hidden transition-all transform bg-transparent text-white">
+      <h3 className="text-white text-sm pb-4">
+        Be the first one to enter our final stage. Sign up now! <br />
+        <button onClick={() => setOpen(true)}>
+          What is <span className="text-light font-bold">MahaloTV</span>
+        </button>
       </h3>
 
       <form className="my-4 space-y-4">
@@ -47,7 +50,7 @@ const SignUp = () => {
           name="name"
           value={credentials.name}
           onChange={handleChange}
-          className="w-full py-2 px-4 bg-transparent border border-gray-600 rounded-lg outline-none text-white font-tight placeholder:text-gray-600"
+          className="w-full py-2 px-4 bg-black bg-opacity-80 border border-white rounded-2xl outline-none text-white font-tight placeholder:text-white"
         />
 
         <input
@@ -56,7 +59,7 @@ const SignUp = () => {
           name="email"
           value={credentials.email}
           onChange={handleChange}
-          className="w-full py-2 px-4 bg-transparent border border-gray-600 rounded-lg outline-none text-white font-tight placeholder:text-gray-600"
+          className="w-full py-2 px-4 bg-black bg-opacity-80 border border-white rounded-2xl outline-none text-white font-tight placeholder:text-white"
         />
 
         <input
@@ -65,20 +68,9 @@ const SignUp = () => {
           name="password"
           value={credentials.password}
           onChange={handleChange}
-          className="w-full py-2 px-4 bg-transparent border border-gray-600 rounded-lg outline-none text-white font-tight placeholder:text-gray-600"
+          className="w-full py-2 px-4 bg-black bg-opacity-80 border border-white rounded-2xl outline-none text-white font-tight placeholder:text-white"
         />
       </form>
-
-      <button className="mb-6 text-sm text-gray-500 hover:underline">
-        Already have an account? <span className="text-light">Log In</span>
-      </button>
-
-      <p className="text-gray-600 text-sm my-6 text-center">
-        By signin up you agree to receiving product related updates.
-      </p>
-
-      {/* divider */}
-      <div className="w-full h-[1px] bg-gray-600 mb-4"></div>
 
       <button
         onClick={async (e) => await handleSubmit(e)}
