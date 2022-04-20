@@ -10,6 +10,7 @@ import Footer from "components/Footer";
 import AuthContextProvider from "context/authContext";
 import MoviesContextProvider from "context/moviesContext";
 import ProvidersContextProvider from "context/providersContext";
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
   const { pathname } = useRouter();
@@ -17,6 +18,16 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <AuthContextProvider>
+      <Head>
+        {/* FAVICON */}
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon.png"
+        />
+      </Head>
+
       {/* Progress bar */}
       <NextNProgress
         color="#E17CFD"
