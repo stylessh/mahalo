@@ -2,6 +2,7 @@ import { useState } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
+import useAuth from "hooks/useAuth";
 import Related from "components/Related";
 
 import { movieInfo, relatedMovies } from "services/movies";
@@ -11,6 +12,8 @@ import getProviderImage from "utils/getProviderImage";
 import getProviderHomePage from "utils/getProviderHomePage";
 
 const MovieDetails = ({ movie, related }) => {
+  const { user } = useAuth();
+
   const router = useRouter();
 
   const [trailer, setTrailer] = useState("");
@@ -20,6 +23,8 @@ const MovieDetails = ({ movie, related }) => {
     setTrailer(trailerId);
     setOpenTrailerModal(true);
   };
+
+  if (!user) router.push("/start");
 
   return (
     <main className="min-h-screen bg-dark">

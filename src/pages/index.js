@@ -3,16 +3,23 @@ import { useEffect } from "react";
 import SearchBar from "components/SearchBar";
 import Tabs from "components/Tabs";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 import { trendingMovies } from "services/movies";
 import useMovies from "hooks/useMovies";
+import useAuth from "hooks/useAuth";
 
 export default function Home({ trending }) {
+  const { user } = useAuth();
+  const { push } = useRouter();
+
   const { setTrending } = useMovies();
 
   useEffect(() => {
     setTrending(trending);
   }, []);
+
+  if (!user) push("/start");
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-dark">

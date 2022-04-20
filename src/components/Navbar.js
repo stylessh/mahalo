@@ -3,10 +3,7 @@ import { Popover, Menu } from "@headlessui/react";
 import Link from "next/link";
 import Logo from "./SVG/Logo";
 
-import SignUp from "./SignUp";
-
 import useAuth from "hooks/useAuth";
-import SignIn from "./SignIn";
 
 const Navbar = () => {
   const { user, logout, openSignIn, openSignUp, setOpenSignIn, setOpenSignUp } =
@@ -30,25 +27,6 @@ const Navbar = () => {
         >
           Help us improve
         </a>
-
-        {/* Auth buttons */}
-        {!user && (
-          <>
-            <button
-              onClick={() => setOpenSignIn(true)}
-              className="text-gray-600 transition hover:text-gray-400 hidden md:block"
-            >
-              Login
-            </button>
-
-            <button
-              onClick={() => setOpenSignUp(true)}
-              className=" hidden md:inline-block bg-gradient-to-r from-light to-primary px-4 py-2 rounded-full text-white font-bold"
-            >
-              Get early access
-            </button>
-          </>
-        )}
 
         {user && (
           <Popover className="relative">
@@ -127,63 +105,7 @@ const Navbar = () => {
             </Popover.Panel>
           </Popover>
         )}
-
-        {!user && (
-          <div className="flex md:hidden items-center space-x-4">
-            <button
-              onClick={() => setOpenSignUp(true)}
-              className="inline-block bg-gradient-to-r from-light to-primary px-4 py-2 rounded-full text-white font-bold"
-            >
-              Get early access
-            </button>
-
-            {/* mobile nav */}
-            <Menu as="nav" className="relative">
-              <Menu.Button>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-7 w-7 text-white transform translate-y-0.5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4 6h16M4 12h16m-7 6h7"
-                  />
-                </svg>
-              </Menu.Button>
-
-              <Menu.Items className="absolute right-0 w-max mt-6 bg-dark border border-gray-500 p-4 rounded-xl flex flex-col space-y-4 text-center">
-                <Menu.Item>
-                  <button
-                    onClick={() => setOpenSignIn(true)}
-                    className="text-gray-600 transition hover:text-gray-400"
-                  >
-                    Login
-                  </button>
-                </Menu.Item>
-
-                <Menu.Item>
-                  <Link href="/feedback">
-                    <a className="text-gray-600 transition hover:text-gray-400">
-                      Help us improve
-                    </a>
-                  </Link>
-                </Menu.Item>
-              </Menu.Items>
-            </Menu>
-          </div>
-        )}
       </nav>
-
-      {/* Register modal */}
-      <SignUp open={openSignUp} setOpen={setOpenSignUp} />
-
-      {/* Login modal */}
-      <SignIn open={openSignIn} setOpen={setOpenSignIn} />
     </header>
   );
 };

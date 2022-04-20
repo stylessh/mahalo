@@ -1,4 +1,4 @@
-function Logo() {
+function Logo({ center }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6,7 +6,7 @@ function Logo() {
       height="42"
       fill="none"
       viewBox="0 0 138 42"
-      className="h-12 w-20 md:h-16 md:w-24"
+      className={`h-12 w-20 md:h-16 md:w-24 ${center && "mx-auto"}`}
     >
       <path
         fill="#fff"

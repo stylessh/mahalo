@@ -1,5 +1,6 @@
 import "styles/globals.css";
 
+import { useRouter } from "next/router";
 import NextNProgress from "nextjs-progressbar";
 import { Toaster } from "react-hot-toast";
 
@@ -10,8 +11,10 @@ import AuthContextProvider from "context/authContext";
 import MoviesContextProvider from "context/moviesContext";
 import ProvidersContextProvider from "context/providersContext";
 
-
 function MyApp({ Component, pageProps }) {
+  const { pathname } = useRouter();
+  const startScreen = pathname === "/start";
+
   return (
     <AuthContextProvider>
       {/* Progress bar */}
@@ -26,7 +29,7 @@ function MyApp({ Component, pageProps }) {
         }}
       />
 
-      <Navbar />
+      {!startScreen && <Navbar />}
 
       <MoviesContextProvider>
         <ProvidersContextProvider>
@@ -34,7 +37,7 @@ function MyApp({ Component, pageProps }) {
         </ProvidersContextProvider>
       </MoviesContextProvider>
 
-      <Footer />
+      {!startScreen && <Footer />}
 
       <Toaster position="bottom-left" />
     </AuthContextProvider>
