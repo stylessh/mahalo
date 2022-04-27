@@ -3,31 +3,63 @@ import axios from "axios";
 
 import useDebounce from "hooks/useDebounce";
 import useMovies from "hooks/useMovies";
+import useProviders from "hooks/useProviders";
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
-  const [hasSearched, setHasSearched] = useState(false)
+  const [hasSearched, setHasSearched] = useState(false);
   const debouncedQuery = useDebounce(query, 300);
 
-  const { setTrending } = useMovies();
+  const { tabIndex, providersIds } = useProviders();
+
+  const { setTrending, setCustomMovies, customMoviesPage } = useMovies();
 
   useEffect(() => {
     if (debouncedQuery) {
-      //  searching movie by query from input
-      axios.get(`/api/search?q=${debouncedQuery}`).then(({ data }) => {
-        setTrending(data.results);
-      });
+      if (tabIndex === 0) {
+        //  searching movie by query from input
+        axios.get(`/api/search?q=${debouncedQuery}`).then(({ data }) => {
+          setTrending(data.results);
+        });
+      }
+
+      if (tabIndex === 1) {
+        axios
+          .get(`/api/searchByProvider`, {
+            params: {
+              q: debouncedQuery,
+              providers: providersIds.join("|"),
+            },
+          })
+          .then(({ data }) => {
+            setCustomMovies(data.results);
+          });
+      }
 
       setHasSearched(true);
 
-      return
+      return;
     }
-    // get trending movies
 
-    if(!debouncedQuery && hasSearched) {
+    // get trending movies
+    if (!debouncedQuery && hasSearched) {
       axios.get("/api/movies/trending").then(({ data }) => {
         setTrending(data);
       });
+    }
+
+    // get custom movies
+    if (!debouncedQuery && !hasSearched) {
+      axios
+        .get("/api/movies/custom", {
+          params: {
+            providers: providersIds.join("|"),
+            page: customMoviesPage,
+          },
+        })
+        .then(({ data }) => {
+          setCustomMovies(data);
+        });
     }
   }, [debouncedQuery]);
 
