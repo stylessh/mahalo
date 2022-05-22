@@ -14,6 +14,7 @@ export default function getProviderImage(providerId, providerOriginalImage) {
     11: "Mubi",
     175: "Netflix Kids",
     383: "TV2 Play",
+    2: "Apple TV",
     350: "Apple TV",
     192: "Youtube",
     531: "Paramount",
@@ -30,6 +31,9 @@ export default function getProviderImage(providerId, providerOriginalImage) {
   if (redirects[providerId]) {
     providerId = redirects[providerId];
   }
+
+  console.log(providerId)
+  console.log(`/assets/providers/${provider[providerId]}.png`);
 
   //   return url image based on provider id
   if (provider[providerId])

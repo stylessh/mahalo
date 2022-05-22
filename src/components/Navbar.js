@@ -1,22 +1,19 @@
-import { useRouter } from "next/router";
 import { Popover } from "@headlessui/react";
 
-import Link from "next/link";
 import Logo from "./SVG/Logo";
-
 import useAuth from "hooks/useAuth";
 
 const Navbar = () => {
   const { user, logout } = useAuth();
-  const { reload } = useRouter();
 
   return (
     <header className="absolute top-0 left-0 right-0 flex justify-between items-center py-6 w-[90%] mx-auto z-50">
-      <Link href="/">
-        <button onClick={() => reload()} className="cursor-pointer">
-          <Logo />
-        </button>
-      </Link>
+      <button
+        onClick={() => (window.location.pathname = "/")}
+        className="cursor-pointer"
+      >
+        <Logo />
+      </button>
 
       {/* desktop nav */}
       <nav className="space-x-6 flex items-center">
