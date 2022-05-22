@@ -9,15 +9,40 @@ import { trendingMovies } from "services/movies";
 import useMovies from "hooks/useMovies";
 import useAuth from "hooks/useAuth";
 
-export default function Home({ trending }) {
+export default function Home({ trendingFromServer }) {
   const { user } = useAuth();
   const { push } = useRouter();
 
-  const { setTrending } = useMovies();
+  const { trending, setTrending, trendingScrollPos, setTrendingScrollPos } =
+    useMovies();
 
   useEffect(() => {
-    setTrending(trending);
+    if (!trending) {
+      setTrending(trendingFromServer);
+    }
   }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo(0, trendingScrollPos);
+    }, 500);
+  }, []);
+
+  // recovering scroll
+  useEffect(() => {
+    setTimeout(() => {
+      window.addEventListener("scroll", handleScrollPos);
+    }, 1000);
+
+    return () => {
+      window.removeEventListener("scroll", handleScrollPos);
+    };
+  }, []);
+
+  const handleScrollPos = () => {
+    // every time the window is scrolled, update the value.
+    setTrendingScrollPos(window.scrollY);
+  };
 
   if (!user) push("/start");
 
@@ -58,7 +83,7 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      trending,
+      trendingFromServer: trending,
     },
   };
 }

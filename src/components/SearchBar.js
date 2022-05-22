@@ -12,7 +12,8 @@ const SearchBar = () => {
 
   const { tabIndex, providersIds } = useProviders();
 
-  const { setTrending, setCustomMovies, customMoviesPage } = useMovies();
+  const { setTrending, setCustomMovies, customMoviesPage, setIsSearching } =
+    useMovies();
 
   useEffect(() => {
     if (debouncedQuery) {
@@ -20,6 +21,7 @@ const SearchBar = () => {
         //  searching movie by query from input
         axios.get(`/api/search?q=${debouncedQuery}`).then(({ data }) => {
           setTrending(data.results);
+          setIsSearching(true);
         });
       }
 
@@ -45,6 +47,7 @@ const SearchBar = () => {
     if (!debouncedQuery && hasSearched) {
       axios.get("/api/movies/trending").then(({ data }) => {
         setTrending(data);
+        setIsSearching(false);
       });
     }
 

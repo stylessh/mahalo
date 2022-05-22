@@ -10,6 +10,7 @@ import Trailer from "components/Trailer";
 
 import getProviderImage from "utils/getProviderImage";
 import getProviderHomePage from "utils/getProviderHomePage";
+import Link from "next/link";
 
 const MovieDetails = ({ movie, related }) => {
   const { user } = useAuth();
@@ -47,25 +48,28 @@ const MovieDetails = ({ movie, related }) => {
 
         <section className="relative w-[90%] md:w-[70%] mx-auto z-20 mt-[90px] h-auto bg-dark border-2 border-gray-500 p-8 rounded-lg grid grid-cols-1 xl:grid-cols-[1fr,2fr] gap-x-5">
           {/* close button */}
-          <button
-            onClick={() => router.back()}
-            className="absolute top-5 right-6"
+          <Link
+            href="/"
+            scroll
+            // onClick={() => router.back()}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 text-white"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
+            <a className="absolute top-5 right-6">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </a>
+          </Link>
 
           {/* media */}
           <article>

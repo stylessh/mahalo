@@ -6,8 +6,7 @@ import Logo from "./SVG/Logo";
 import useAuth from "hooks/useAuth";
 
 const Navbar = () => {
-  const { user, logout, openSignIn, openSignUp, setOpenSignIn, setOpenSignUp } =
-    useAuth();
+  const { user, logout } = useAuth();
 
   return (
     <header className="absolute top-0 left-0 right-0 flex justify-between items-center py-6 w-[90%] mx-auto z-50">
@@ -19,6 +18,13 @@ const Navbar = () => {
 
       {/* desktop nav */}
       <nav className="space-x-6 flex items-center">
+        <a
+          href="mailto:stylesshjs@gmail.com"
+          className="text-gray-600 transition hover:text-gray-400 hidden md:block"
+        >
+          Feedback
+        </a>
+
         <a
           href="https://airtable.com/shr5zMoQ5rFQYi5kF"
           target="_blank"

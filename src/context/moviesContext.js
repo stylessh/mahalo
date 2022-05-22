@@ -13,6 +13,12 @@ const initial = {
   customMoviesPage: 1,
   setCustomMoviesPage: null,
 
+  trendingScrollPos: 0,
+  setTrendingScrollPos: () => {},
+
+  isSearching: false,
+  setIsSearching: () => {},
+
   loading: false,
   setLoading: () => {},
 };
@@ -25,6 +31,10 @@ export default function MoviesContextProvider({ children }) {
 
   const [customMovies, setCustomMovies] = useState([]);
   const [customMoviesPage, setCustomMoviesPage] = useState(1);
+
+  const [trendingScrollPos, setTrendingScrollPos] = useState(0);
+
+  const [isSearching, setIsSearching] = useState(false);
 
   const [loading, setLoading] = useState(false);
 
@@ -40,6 +50,12 @@ export default function MoviesContextProvider({ children }) {
 
     customMoviesPage,
     setCustomMoviesPage,
+
+    trendingScrollPos,
+    setTrendingScrollPos,
+
+    isSearching,
+    setIsSearching,
 
     loading,
     setLoading,
