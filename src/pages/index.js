@@ -17,7 +17,7 @@ export default function Home({ trendingFromServer }) {
     useMovies();
 
   useEffect(() => {
-    if (!trending) {
+    if (trending.length === 0) {
       setTrending(trendingFromServer);
     }
   }, []);
