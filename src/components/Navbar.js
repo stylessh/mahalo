@@ -18,13 +18,6 @@ const Navbar = () => {
       {/* desktop nav */}
       <nav className="space-x-6 flex items-center">
         <a
-          href="mailto:stylesshjs@gmail.com"
-          className="text-gray-600 transition hover:text-gray-400 hidden md:block"
-        >
-          Feedback
-        </a>
-
-        <a
           href="https://airtable.com/shr5zMoQ5rFQYi5kF"
           target="_blank"
           rel="noreferrer"

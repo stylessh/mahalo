@@ -32,9 +32,6 @@ export default function getProviderImage(providerId, providerOriginalImage) {
     providerId = redirects[providerId];
   }
 
-  console.log(providerId)
-  console.log(`/assets/providers/${provider[providerId]}.png`);
-
   //   return url image based on provider id
   if (provider[providerId])
     return `/assets/providers/${provider[providerId]}.png`;
